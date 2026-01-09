@@ -136,7 +136,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 5%;
+            padding: 8rem 5% 0;
             position: relative;
             overflow: hidden;
         }
@@ -493,6 +493,109 @@
             font-weight: bold;
         }
 
+        /* Trust Badges Section - Removed */
+        
+        /* Why Us Section */
+        #why-us {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03), rgba(236, 72, 153, 0.03));
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 5rem;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .why-card:hover::before {
+            opacity: 1;
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card p {
+            color: #94a3b8;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stats Showcase */
+        .stats-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+        }
+
+        .stat-large {
+            text-align: center;
+        }
+
+        .stat-number-large {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label-large {
+            color: #cbd5e1;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
         /* Problem/Solution Section */
         .problem-solution {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
@@ -840,6 +943,7 @@
     <nav id="nav">
         <div class="logo">Yujo Studio</div>
         <ul class="nav-links">
+            <li><a href="#why-us">Why Us</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#process">Process</a></li>
             <li><a href="#contact" class="nav-cta">Get Started</a></li>
@@ -852,7 +956,7 @@
         <div class="floating-element"></div>
         
         <div class="hero-content">
-            <div class="hero-badge">✨ Limited Availability for 2026</div>
+            <div class="hero-badge">✨ Accepting Select Clients Throughout 2026</div>
             <h1>Your Business Deserves <span class="highlight">Better</span></h1>
             <p>We're not another agency promising the world. We're a selective team that helps growing businesses run smoother, look better, and scale faster with expert design, marketing, and systems.</p>
             <div class="cta-group">
@@ -872,6 +976,64 @@
                     <div class="trust-badge-number">Select</div>
                     <div class="trust-badge-text">Partnerships Only</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us">
+        <div class="section-header">
+            <div class="section-label">Why Choose Us</div>
+            <h2>We're Not Like Other Agencies</h2>
+            <p>Here's what actually sets us apart—no fluff, just facts.</p>
+        </div>
+        <div class="why-us-grid">
+            <div class="why-card">
+                <div class="why-icon">🎯</div>
+                <h3>Selective Partnership Model</h3>
+                <p>We intentionally limit our client roster. Why? Because we'd rather do exceptional work for a few than mediocre work for many. You get our A-team, not our bench.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🔄</div>
+                <h3>One Team, Everything</h3>
+                <p>No more juggling five different freelancers who don't talk to each other. Design, dev, marketing, systems—we handle it all seamlessly under one roof.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">📊</div>
+                <h3>Data-Driven, Always</h3>
+                <p>We don't guess. Every decision is backed by data, every campaign is measured, and every dollar you spend has a clear ROI attached to it.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">⚡</div>
+                <h3>Speed Without Sacrifice</h3>
+                <p>We move fast, but we never cut corners. Rapid execution with zero compromise on quality—because your competition isn't waiting.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🛠️</div>
+                <h3>Built for Growth</h3>
+                <p>Everything we create is designed to scale with you. No band-aid solutions, no technical debt—just solid foundations that grow as you do.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">💬</div>
+                <h3>Actually Available</h3>
+                <p>24-hour response guarantee. Real humans, real conversations. No ticket systems, no automated runarounds—just direct access to the people doing the work.</p>
+            </div>
+        </div>
+        <div class="stats-showcase">
+            <div class="stat-large">
+                <div class="stat-number-large" data-target="100">0</div>
+                <div class="stat-label-large">% Client Satisfaction</div>
+            </div>
+            <div class="stat-large">
+                <div class="stat-number-large" data-target="5">0</div>
+                <div class="stat-label-large">x Average Revenue Growth</div>
+            </div>
+            <div class="stat-large">
+                <div class="stat-number-large" data-target="48">0</div>
+                <div class="stat-label-large">Hour Average Turnaround</div>
+            </div>
+            <div class="stat-large">
+                <div class="stat-number-large" data-target="15">0</div>
+                <div class="stat-label-large">+ Years Combined Experience</div>
             </div>
         </div>
     </section>
@@ -1022,7 +1184,7 @@
             <p>We don't work with everyone. We maintain a limited client roster to ensure every partnership gets the attention, expertise, and results it deserves. Quality over quantity isn't just our motto—it's our operating principle.</p>
             <div class="availability-badge">
                 <span class="pulse-dot"></span>
-                <span>Accepting New Clients for Q1 2026</span>
+                <span>Accepting Select Clients for 2026</span>
             </div>
             <p style="margin-top: 2rem; font-size: 1rem;">When you work with Yujo, you're not just another account number. You're a partner. And we treat our partners like gold.</p>
         </div>
@@ -1079,9 +1241,9 @@
                     <li>Free 30-minute strategy session</li>
                     <li>Custom recommendations for your business</li>
                     <li>No obligation, no hard sell</li>
-                    <li>24-hour response guarantee</li>
+                    <li>Same-day response guarantee</li>
                 </ul>
-                <p style="color: var(--accent); font-weight: 600;">Limited spots available for Q1 2026</p>
+                <p style="color: var(--accent); font-weight: 600;">Limited partnerships available for 2026</p>
             </div>
             <div class="contact-content">
                 <form class="contact-form" onsubmit="handleSubmit(event)">
@@ -1114,7 +1276,7 @@
                         <textarea id="message" name="message" required placeholder="What are you trying to achieve?"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Book Your Free Strategy Call</button>
-                    <p style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-top: 1rem;">We'll respond within 24 hours</p>
+                    <p style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-top: 1rem;">Same-day response guaranteed</p>
                 </form>
             </div>
         </div>
@@ -1159,7 +1321,7 @@
             console.log('Form submitted:', data);
             
             // Show success message
-            alert('Thank you! We\'ll get back to you within 24 hours to schedule your free strategy call.');
+            alert('Thank you! We\'ll get back to you same day to schedule your free strategy call.');
             e.target.reset();
         }
 
