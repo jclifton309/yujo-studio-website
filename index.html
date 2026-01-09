@@ -200,7 +200,7 @@
         .hero p {
             font-size: 1.3rem;
             color: var(--text-secondary);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 2.5rem;
             line-height: 1.6;
         }
@@ -471,6 +471,61 @@
             transform: translateY(-2px);
         }
 
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(217, 125, 84, 0.08), rgba(240, 176, 144, 0.08));
+            border-top: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .cta-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 24px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
         /* Contact */
         .contact-wrapper {
             max-width: 900px;
@@ -646,17 +701,29 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Why Choose Us</div>
-                <h2>Why Choose Us?</h2>
+                <div class="section-label">The Reality</div>
+                <h2>Tired of spinning your wheels?</h2>
             </div>
             <div class="ps-grid">
-                <div class="ps-card solution">
-                    <h3>Full Attention, Always</h3>
-                    <p>We work with just a few clients at a time, so you always get our full attention.</p>
+                <div class="ps-card problem">
+                    <h3>The Problem</h3>
+                    <ul class="ps-list">
+                        <li>Juggling multiple freelancers who don't communicate</li>
+                        <li>Your website looks dated and converts poorly</li>
+                        <li>Marketing feels like throwing money away</li>
+                        <li>Systems held together with duct tape</li>
+                        <li>You're the bottleneck in your own business</li>
+                    </ul>
                 </div>
                 <div class="ps-card solution">
-                    <h3>Real Results</h3>
-                    <p>No confusing jargon. No wasted time. Just real results that help your business grow.</p>
+                    <h3>The Solution</h3>
+                    <ul class="ps-list">
+                        <li>One team handling everything seamlessly</li>
+                        <li>Modern designs that actually convert</li>
+                        <li>Data-driven marketing with clear ROI</li>
+                        <li>Automated systems that free your time</li>
+                        <li>Expert support whenever you need it</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -667,6 +734,7 @@
             <div class="section-header">
                 <div class="section-label">What We Do</div>
                 <h2>What We Do for You</h2>
+                <p>One team. Complete solutions. Real results.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -725,6 +793,21 @@
         </div>
     </section>
 
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>We Work With a Select Few</h2>
+                <p>We work with just a few clients at a time, so you always get our full attention. No confusing jargon. No wasted time. Just real results that help your business grow.</p>
+                <div class="availability">
+                    <span class="pulse-dot"></span>
+                    <span>Taking Applications for 2026</span>
+                </div>
+                <br>
+                <a href="#contact" class="btn btn-primary">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
     <section id="contact">
         <div class="container">
             <div class="section-header">
@@ -733,8 +816,8 @@
             </div>
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <h3>Let's talk about your business goals</h3>
-                    <p>Reach out and let's talk about your business. No pressure, no sales pitch—just a quick chat to see if we're the right fit for each other.</p>
+                    <h3>Let's talk about your goals</h3>
+                    <p>Reach out and let's chat about your business. No pressure, no sales pitch—just a quick conversation to see if we're the right fit for each other.</p>
                     <ul class="contact-benefits">
                         <li>Fast response times</li>
                         <li>Custom recommendations</li>
@@ -775,6 +858,20 @@
             </div>
         </div>
     </section>
+
+    <!-- Hidden form for Netlify detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <select name="service">
+            <option value="design">Design & Branding</option>
+            <option value="marketing">Marketing & Growth</option>
+            <option value="website">Website Development</option>
+            <option value="systems">Systems & Automation</option>
+            <option value="everything">Everything</option>
+        </select>
+        <textarea name="message"></textarea>
+    </form>
 
     <footer>
         <div class="container">
