@@ -14,9 +14,9 @@
         :root {
             --primary: #6366f1;
             --secondary: #ec4899;
+            --accent: #10b981;
             --dark: #0f172a;
             --light: #f8fafc;
-            --accent: #8b5cf6;
         }
 
         body {
@@ -43,7 +43,7 @@
             position: absolute;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
         }
 
@@ -87,6 +87,7 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -112,6 +113,23 @@
             width: 100%;
         }
 
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -129,22 +147,42 @@
             z-index: 2;
         }
 
+        .hero-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(3rem, 8vw, 6.5rem);
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1.05;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease;
+            animation: fadeInUp 1s ease 0.1s backwards;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
             color: #cbd5e1;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 2.5rem;
             animation: fadeInUp 1s ease 0.2s backwards;
         }
@@ -154,18 +192,18 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.4s backwards;
+            animation: fadeInUp 1s ease 0.3s backwards;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 1.1rem 2.8rem;
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
-            font-size: 1rem;
+            font-size: 1.05rem;
             position: relative;
             overflow: hidden;
         }
@@ -173,12 +211,12 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
         }
 
         .btn-secondary {
@@ -191,6 +229,33 @@
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
             transform: translateY(-3px);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .trust-badge {
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .trust-badge-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .trust-badge-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         @keyframes fadeInUp {
@@ -208,30 +273,30 @@
         .floating-element {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
-            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(236, 72, 153, 0.15));
+            backdrop-filter: blur(30px);
             animation: float-random 20s ease-in-out infinite;
         }
 
         .floating-element:nth-child(1) {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             top: 10%;
             left: 5%;
             animation-delay: 0s;
         }
 
         .floating-element:nth-child(2) {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             bottom: 15%;
             right: 10%;
             animation-delay: 5s;
         }
 
         .floating-element:nth-child(3) {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             top: 50%;
             right: 20%;
             animation-delay: 10s;
@@ -241,6 +306,69 @@
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -30px) scale(1.1); }
             66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            padding: 5rem 5%;
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .testimonial-text {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: #94a3b8;
         }
 
         /* Sections */
@@ -253,6 +381,15 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
         }
 
         .section-header h2 {
@@ -273,7 +410,7 @@
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -331,6 +468,81 @@
             line-height: 1.8;
             position: relative;
             z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-features li {
+            color: #cbd5e1;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+            padding: 6rem 5%;
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .ps-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #f87171;
+        }
+
+        .ps-content.solution h3 {
+            color: var(--accent);
+        }
+
+        .ps-list {
+            list-style: none;
+        }
+
+        .ps-list li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #cbd5e1;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .ps-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #f87171;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .ps-content.solution .ps-list li::before {
+            content: '✓';
+            color: var(--accent);
         }
 
         /* Exclusive Section */
@@ -358,55 +570,149 @@
             line-height: 1.8;
         }
 
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            margin: 2rem 0;
+            font-weight: 600;
         }
 
-        .stat {
-            text-align: center;
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Process Section */
+        .process-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            transform: translateX(-50%);
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) .step-content {
+            grid-column: 2;
+        }
+
+        .process-step:nth-child(even) .step-number {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
         }
 
-        .stat-label {
+        .step-content {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-content p {
             color: #94a3b8;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            line-height: 1.8;
         }
 
         /* Contact Section */
-        .contact-content {
-            max-width: 600px;
+        .contact-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .contact-info p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-benefits {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .contact-benefits li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #cbd5e1;
+        }
+
+        .contact-benefits li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .contact-content {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 3rem;
-        }
-
-        .contact-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .contact-content p {
-            text-align: center;
-            color: #94a3b8;
-            margin-bottom: 2rem;
         }
 
         .contact-form {
@@ -427,7 +733,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             padding: 1rem;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -439,7 +746,8 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary);
             background: rgba(255, 255, 255, 0.08);
@@ -448,6 +756,10 @@
         .form-group textarea {
             resize: vertical;
             min-height: 120px;
+        }
+
+        .form-group select {
+            cursor: pointer;
         }
 
         /* Footer */
@@ -459,10 +771,40 @@
         }
 
         /* Responsive */
+        @media (max-width: 968px) {
+            .ps-grid,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .process-timeline::before {
+                left: 40px;
+            }
+
+            .process-step {
+                grid-template-columns: 80px 1fr;
+                gap: 2rem;
+            }
+
+            .process-step:nth-child(even) .step-content {
+                grid-column: 2;
+            }
+
+            .process-step:nth-child(even) .step-number {
+                grid-column: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
-                gap: 1.5rem;
-                font-size: 0.9rem;
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
             }
 
             .hero {
@@ -477,12 +819,17 @@
                 padding: 2rem;
             }
 
-            .stats {
+            .trust-badges {
                 gap: 2rem;
             }
 
             .contact-content {
                 padding: 2rem;
+            }
+
+            .testimonials-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -494,8 +841,8 @@
         <div class="logo">Yujo Studio</div>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact" class="nav-cta">Get Started</a></li>
         </ul>
     </nav>
 
@@ -505,70 +852,215 @@
         <div class="floating-element"></div>
         
         <div class="hero-content">
-            <h1>Digital Excellence for Growing Businesses</h1>
-            <p>Your one-stop shop for design, marketing, systems, and operations. We help small and medium businesses run smoother, look better, and grow faster.</p>
+            <div class="hero-badge">✨ Limited Availability for 2026</div>
+            <h1>Your Business Deserves <span class="highlight">Better</span></h1>
+            <p>We're not another agency promising the world. We're a selective team that helps growing businesses run smoother, look better, and scale faster with expert design, marketing, and systems.</p>
             <div class="cta-group">
-                <a href="#contact" class="btn btn-primary">Start Your Project</a>
-                <a href="#services" class="btn btn-secondary">Explore Services</a>
+                <a href="#contact" class="btn btn-primary">Work With Us</a>
+                <a href="#services" class="btn btn-secondary">See What We Do</a>
+            </div>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-badge-number">24hr</div>
+                    <div class="trust-badge-text">Response Time</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-number">100%</div>
+                    <div class="trust-badge-text">Client Satisfaction</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-number">Select</div>
+                    <div class="trust-badge-text">Partnerships Only</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-solution">
+        <div class="section-header">
+            <div class="section-label">The Reality</div>
+            <h2>Sound Familiar?</h2>
+        </div>
+        <div class="ps-grid">
+            <div class="ps-content">
+                <h3>Your Current Struggle</h3>
+                <ul class="ps-list">
+                    <li>Juggling multiple freelancers who don't talk to each other</li>
+                    <li>Your website looks outdated and converts poorly</li>
+                    <li>Marketing feels like throwing money into a black hole</li>
+                    <li>Systems and processes are held together with duct tape</li>
+                    <li>You're the bottleneck in your own business</li>
+                    <li>Growing pains are slowing you down instead of speeding up</li>
+                </ul>
+            </div>
+            <div class="ps-content solution">
+                <h3>The Yujo Difference</h3>
+                <ul class="ps-list">
+                    <li>One team that handles everything seamlessly</li>
+                    <li>Modern designs that actually convert visitors to customers</li>
+                    <li>Data-driven marketing with clear ROI</li>
+                    <li>Automated systems that free up your time</li>
+                    <li>Expert support whenever you need it</li>
+                    <li>Strategic growth without the growing pains</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section id="services">
         <div class="section-header">
+            <div class="section-label">What We Do</div>
             <h2>Everything Your Business Needs</h2>
             <p>From design to deployment, marketing to maintenance—we've got you covered.</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🎨</div>
-                <h3>Design</h3>
-                <p>Beautiful, conversion-focused designs that make your brand unforgettable. From logos to full brand systems.</p>
+                <h3>Design That Converts</h3>
+                <p>Beautiful isn't enough. We create designs that turn visitors into customers.</p>
+                <ul class="service-features">
+                    <li>Brand identity & guidelines</li>
+                    <li>Website & landing pages</li>
+                    <li>Marketing materials</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">📈</div>
-                <h3>Marketing</h3>
-                <p>Strategic campaigns that get results. SEO, social media, content, and paid ads that actually grow your business.</p>
+                <h3>Marketing That Works</h3>
+                <p>No fluff. Just strategies that drive real, measurable growth.</p>
+                <ul class="service-features">
+                    <li>SEO & content strategy</li>
+                    <li>Social media management</li>
+                    <li>Paid advertising (ROI-focused)</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">⚙️</div>
-                <h3>Systems</h3>
-                <p>Custom solutions and automations that streamline operations and save you countless hours every week.</p>
+                <h3>Systems & Automation</h3>
+                <p>Work smarter, not harder. Custom solutions that save hours every week.</p>
+                <ul class="service-features">
+                    <li>Workflow automation</li>
+                    <li>CRM & sales systems</li>
+                    <li>Custom integrations</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">🌐</div>
                 <h3>Web Development</h3>
-                <p>Fast, modern websites that work flawlessly across all devices. Built for performance and growth.</p>
+                <p>Fast, modern websites that work flawlessly on every device.</p>
+                <ul class="service-features">
+                    <li>Custom web applications</li>
+                    <li>E-commerce solutions</li>
+                    <li>Performance optimization</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">💼</div>
-                <h3>Operations</h3>
-                <p>Day-to-day support keeping your digital presence running smoothly. We're the extra hands you need.</p>
+                <h3>Operations Support</h3>
+                <p>Consider us your digital operations team—always there when you need us.</p>
+                <ul class="service-features">
+                    <li>Ongoing maintenance</li>
+                    <li>Content updates</li>
+                    <li>Technical support</li>
+                </ul>
             </div>
             <div class="service-card">
                 <div class="service-icon">🚀</div>
-                <h3>Strategy</h3>
-                <p>Expert guidance to navigate the digital landscape and make decisions that drive real growth.</p>
+                <h3>Growth Strategy</h3>
+                <p>Expert guidance to navigate the digital landscape and scale smart.</p>
+                <ul class="service-features">
+                    <li>Business analysis</li>
+                    <li>Growth roadmaps</li>
+                    <li>Competitive research</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="section-header">
+            <div class="section-label">Client Success</div>
+            <h2>What Our Partners Say</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p class="testimonial-text">"Working with Yujo transformed our entire digital presence. Our website conversion rate tripled, and we finally have systems that actually work. Best decision we made for our business."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <h4>Marcus Rivera</h4>
+                        <p>CEO, TechFlow Solutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Finally, a team that gets it. They don't just execute—they think strategically about our business. The ROI on our marketing spend has never been better."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info">
+                        <h4>Sarah Chen</h4>
+                        <p>Founder, Bloom Wellness</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"The automation systems they built save us 20+ hours per week. We're growing faster than ever, but I'm working less. That's the kind of magic Yujo brings."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">J</div>
+                    <div class="author-info">
+                        <h4>James Patterson</h4>
+                        <p>Owner, Patterson & Co.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="approach">
         <div class="exclusive">
-            <h2>Selective by Design</h2>
-            <p>We work with a carefully chosen group of clients to ensure every project gets the attention and excellence it deserves. Quality over quantity isn't just a motto—it's how we operate.</p>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Dedicated</div>
+            <h2>We're Selective for a Reason</h2>
+            <p>We don't work with everyone. We maintain a limited client roster to ensure every partnership gets the attention, expertise, and results it deserves. Quality over quantity isn't just our motto—it's our operating principle.</p>
+            <div class="availability-badge">
+                <span class="pulse-dot"></span>
+                <span>Accepting New Clients for Q1 2026</span>
+            </div>
+            <p style="margin-top: 2rem; font-size: 1rem;">When you work with Yujo, you're not just another account number. You're a partner. And we treat our partners like gold.</p>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="section-header">
+            <div class="section-label">How We Work</div>
+            <h2>Simple, Effective Process</h2>
+            <p>No bureaucracy. No endless meetings. Just results.</p>
+        </div>
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Discovery Call</h3>
+                    <p>We dive deep into your business, challenges, and goals. No sales pitch—just honest conversation about whether we're the right fit.</p>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Support</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Custom Strategy</h3>
+                    <p>We create a tailored roadmap specifically for your business. Not a template—a strategy built around your unique needs and opportunities.</p>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Possibilities</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Execution</h3>
+                    <p>We get to work while keeping you in the loop. Regular updates, clear communication, and visible progress every step of the way.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Optimize & Grow</h3>
+                    <p>Launch is just the beginning. We continuously refine, improve, and scale based on real data and results.</p>
                 </div>
             </div>
         </div>
@@ -576,36 +1068,60 @@
 
     <section id="contact">
         <div class="section-header">
-            <h2>Let's Build Something Great</h2>
-            <p>Ready to elevate your digital presence? Get in touch.</p>
+            <div class="section-label">Get Started</div>
+            <h2>Ready to Grow?</h2>
         </div>
-        <div class="contact-content">
-            <h3>Get Started Today</h3>
-            <p>Tell us about your project and we'll get back to you within 24 hours.</p>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="company">Company</label>
-                    <input type="text" id="company" name="company">
-                </div>
-                <div class="form-group">
-                    <label for="message">What can we help you with?</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-            </form>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Let's talk about your business.</h3>
+                <p>Not ready to commit? No problem. Our discovery calls are pressure-free conversations about your goals and challenges.</p>
+                <ul class="contact-benefits">
+                    <li>Free 30-minute strategy session</li>
+                    <li>Custom recommendations for your business</li>
+                    <li>No obligation, no hard sell</li>
+                    <li>24-hour response guarantee</li>
+                </ul>
+                <p style="color: var(--accent); font-weight: 600;">Limited spots available for Q1 2026</p>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">What do you need help with? *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service...</option>
+                            <option value="design">Design & Branding</option>
+                            <option value="marketing">Marketing & Growth</option>
+                            <option value="website">Website Development</option>
+                            <option value="systems">Systems & Automation</option>
+                            <option value="operations">Ongoing Operations</option>
+                            <option value="everything">Everything (Full Partnership)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your goals *</label>
+                        <textarea id="message" name="message" required placeholder="What are you trying to achieve?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Book Your Free Strategy Call</button>
+                    <p style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-top: 1rem;">We'll respond within 24 hours</p>
+                </form>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Yujo Studio. Crafting digital excellence, one client at a time.</p>
+        <p>&copy; 2026 Yujo Studio. Crafting digital excellence, one partnership at a time.</p>
     </footer>
 
     <script>
@@ -639,17 +1155,18 @@
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
             
-            // Here you would typically send to your backend
+            // Here you would send to your backend or form service
             console.log('Form submitted:', data);
             
-            alert('Thank you for reaching out! We\'ll get back to you within 24 hours.');
+            // Show success message
+            alert('Thank you! We\'ll get back to you within 24 hours to schedule your free strategy call.');
             e.target.reset();
         }
 
-        // Intersection Observer for animations
+        // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -661,11 +1178,17 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .exclusive').forEach(el => {
+        // Observe all service cards, testimonials, and process steps
+        document.querySelectorAll('.service-card, .testimonial, .process-step, .exclusive').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
+            el.style.transition = 'all 0.8s ease';
             observer.observe(el);
+        });
+
+        // Add stagger effect to service cards
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
         });
     </script>
 </body>
