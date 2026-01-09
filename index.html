@@ -205,6 +205,31 @@
             line-height: 1.6;
         }
 
+        .trust-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-number {
+            text-align: center;
+        }
+
+        .trust-number-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .trust-number-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
         .cta-group {
             display: flex;
             gap: 1rem;
@@ -244,6 +269,32 @@
         .btn-secondary:hover {
             background: var(--bg-card);
             transform: translateY(-2px);
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .floating-cta .btn {
+            box-shadow: 0 4px 20px rgba(217, 125, 84, 0.4);
+        }
+
+        .floating-cta .btn:hover {
+            box-shadow: 0 6px 30px rgba(217, 125, 84, 0.6);
         }
 
         /* Sections */
@@ -429,6 +480,26 @@
             font-size: 1.2rem;
         }
 
+        .services-note {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .services-note p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .services-note strong {
+            color: var(--text-primary);
+        }
+
         /* Partners */
         .partners-section {
             background: var(--bg-card);
@@ -447,23 +518,64 @@
             font-weight: 600;
         }
 
-        .partners-grid {
+        .partners-scroll-wrapper {
+            overflow: hidden;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        .partners-scroll-wrapper::before,
+        .partners-scroll-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .partners-scroll-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-card), transparent);
+        }
+
+        .partners-scroll-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-card), transparent);
+        }
+
+        .partners-scroll {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
+            gap: 1.5rem;
+            animation: scroll 40s linear infinite;
+            width: fit-content;
+        }
+
+        .partners-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .partner-badge {
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             background: var(--bg);
             border: 2px solid var(--border);
-            border-radius: 16px;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .partner-badge:hover {
@@ -659,8 +771,8 @@
                 gap: 2rem;
             }
 
-            .partners-grid {
-                gap: 1.5rem;
+            .partners-scroll {
+                animation: scroll 30s linear infinite;
             }
 
             .contact-form {
@@ -734,62 +846,135 @@
             <div class="section-header">
                 <div class="section-label">What We Do</div>
                 <h2>What We Do for You</h2>
-                <p>One team. Complete solutions. Real results.</p>
+                <p>From brand identity to e-commerce optimization, we handle it all.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🎨</div>
-                    <h3>Design & Branding</h3>
-                    <p>Make your business stand out and turn visitors into loyal customers.</p>
+                    <h3>Branding & Design</h3>
+                    <p>Make your business stand out with a brand that turns visitors into loyal customers.</p>
                     <ul class="service-features">
-                        <li>Brand identity & websites</li>
-                        <li>Landing pages that convert</li>
-                        <li>Marketing materials</li>
+                        <li>Logo & brand identity</li>
+                        <li>Website & landing pages</li>
+                        <li>Marketing collateral</li>
+                        <li>Social graphics & banners</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📈</div>
-                    <h3>Marketing & Growth</h3>
+                    <h3>Digital Marketing</h3>
                     <p>Get strategies that actually bring results—not empty promises.</p>
                     <ul class="service-features">
-                        <li>SEO & content strategy</li>
+                        <li>Google Ads & Meta campaigns</li>
                         <li>Social media management</li>
-                        <li>Paid advertising</li>
+                        <li>SEO & content strategy</li>
+                        <li>Campaign analytics & optimization</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛍️</div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Build, optimize, and scale your online store—on any platform.</p>
+                    <ul class="service-features">
+                        <li>Store setup & optimization</li>
+                        <li>Subscription management</li>
+                        <li>Conversion rate optimization</li>
+                        <li>Platform audits & migrations</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💌</div>
+                    <h3>Email & Customer Growth</h3>
+                    <p>Turn subscribers into customers with automated campaigns that actually work.</p>
+                    <ul class="service-features">
+                        <li>Email automation & flows</li>
+                        <li>Customer lifecycle campaigns</li>
+                        <li>List growth strategies</li>
+                        <li>CRM setup & optimization</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">⚙️</div>
                     <h3>Systems & Automation</h3>
-                    <p>Free up your time with tools that make your business run on autopilot.</p>
+                    <p>Free up your time with smart tools that make your business run on autopilot.</p>
                     <ul class="service-features">
-                        <li>Web applications</li>
                         <li>Workflow automation</li>
-                        <li>CRM & integrations</li>
+                        <li>Analytics dashboards & reporting</li>
+                        <li>Platform integrations</li>
+                        <li>Process optimization</li>
                     </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3>Ongoing Support</h3>
-                    <p>Think of us as your digital team, ready whenever you need help.</p>
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built for performance and growth.</p>
                     <ul class="service-features">
-                        <li>Maintenance & updates</li>
-                        <li>Technical support</li>
-                        <li>Strategic guidance</li>
+                        <li>Custom website builds</li>
+                        <li>Web applications</li>
+                        <li>API integrations</li>
+                        <li>Site speed & mobile optimization</li>
                     </ul>
                 </div>
+            </div>
+            <div class="services-note">
+                <p><strong>Plus Ongoing Support:</strong> Think of us as your digital team. We're here for maintenance, updates, troubleshooting, and strategic guidance whenever you need us.</p>
             </div>
         </div>
     </section>
 
     <section class="partners-section">
         <div class="container">
-            <p class="partners-label">Trusted Partners</p>
-            <div class="partners-grid">
-                <div class="partner-badge">Google Partner</div>
-                <div class="partner-badge">HubSpot</div>
-                <div class="partner-badge">Shopify</div>
-                <div class="partner-badge">Recharge</div>
+            <p class="partners-label">We Speak Your Tech Stack</p>
+            <div class="partners-scroll-wrapper">
+                <div class="partners-scroll">
+                    <div class="partner-badge">Shopify</div>
+                    <div class="partner-badge">HubSpot</div>
+                    <div class="partner-badge">Klaviyo</div>
+                    <div class="partner-badge">Figma</div>
+                    <div class="partner-badge">Adobe Creative Suite</div>
+                    <div class="partner-badge">Google Ads</div>
+                    <div class="partner-badge">Meta Ads</div>
+                    <div class="partner-badge">Zapier</div>
+                    <div class="partner-badge">Canva</div>
+                    <div class="partner-badge">Recharge</div>
+                    <div class="partner-badge">Mailchimp</div>
+                    <div class="partner-badge">Salesforce</div>
+                    <div class="partner-badge">Google Analytics</div>
+                    <div class="partner-badge">WordPress</div>
+                    <div class="partner-badge">WooCommerce</div>
+                    <div class="partner-badge">Webflow</div>
+                    <div class="partner-badge">Sketch</div>
+                    <div class="partner-badge">Stripe</div>
+                    <div class="partner-badge">ActiveCampaign</div>
+                    <div class="partner-badge">BigCommerce</div>
+                    <div class="partner-badge">LinkedIn Ads</div>
+                    <div class="partner-badge">Notion</div>
+                    <!-- Duplicate for seamless scroll -->
+                    <div class="partner-badge">Shopify</div>
+                    <div class="partner-badge">HubSpot</div>
+                    <div class="partner-badge">Klaviyo</div>
+                    <div class="partner-badge">Figma</div>
+                    <div class="partner-badge">Adobe Creative Suite</div>
+                    <div class="partner-badge">Google Ads</div>
+                    <div class="partner-badge">Meta Ads</div>
+                    <div class="partner-badge">Zapier</div>
+                    <div class="partner-badge">Canva</div>
+                    <div class="partner-badge">Recharge</div>
+                    <div class="partner-badge">Mailchimp</div>
+                    <div class="partner-badge">Salesforce</div>
+                    <div class="partner-badge">Google Analytics</div>
+                    <div class="partner-badge">WordPress</div>
+                    <div class="partner-badge">WooCommerce</div>
+                    <div class="partner-badge">Webflow</div>
+                    <div class="partner-badge">Sketch</div>
+                    <div class="partner-badge">Stripe</div>
+                    <div class="partner-badge">ActiveCampaign</div>
+                    <div class="partner-badge">BigCommerce</div>
+                    <div class="partner-badge">LinkedIn Ads</div>
+                    <div class="partner-badge">Notion</div>
+                </div>
             </div>
+            <p style="text-align: center; color: var(--text-secondary); margin-top: 1.5rem; font-size: 0.9rem;">...and many more. Whatever you're using, we can work with it.</p>
         </div>
     </section>
 
