@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yujo Studio - Digital Excellence for Growing Businesses</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Yujo Studio - Digital Excellence for Growing Businesses">
+    <meta name="description" content="We help growing businesses run smoother, look better, and scale faster with expert design, marketing, and systems—all under one roof.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yujostudio.com/">
+    <meta property="og:title" content="Yujo Studio - Digital Excellence for Growing Businesses">
+    <meta property="og:description" content="We help growing businesses run smoother, look better, and scale faster with expert design, marketing, and systems—all under one roof.">
+    <meta property="og:image" content="https://yujostudio.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yujostudio.com/">
+    <meta property="twitter:title" content="Yujo Studio - Digital Excellence for Growing Businesses">
+    <meta property="twitter:description" content="We help growing businesses run smoother, look better, and scale faster with expert design, marketing, and systems—all under one roof.">
+    <meta property="twitter:image" content="https://yujostudio.com/og-image.jpg">
+    
     <style>
         * {
             margin: 0;
@@ -228,33 +247,6 @@
             transform: translateY(-3px);
         }
 
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 4rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        .trust-badge {
-            text-align: center;
-            opacity: 0.7;
-        }
-
-        .trust-badge-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .trust-badge-text {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -302,6 +294,83 @@
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -30px) scale(1.1); }
             66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 3rem 5%;
+            background: rgba(99, 102, 241, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .partners-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .partner-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-width: 160px;
+        }
+
+        .partner-badge:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .partner-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            letter-spacing: -0.5px;
+        }
+
+        /* Brand-specific styling */
+        .partner-badge:nth-child(1) .partner-logo {
+            font-family: 'Product Sans', -apple-system, sans-serif;
+            color: #4285f4;
+        }
+
+        .partner-badge:nth-child(2) .partner-logo {
+            color: #ff7a59;
+        }
+
+        .partner-badge:nth-child(3) .partner-logo {
+            color: #96bf48;
+        }
+
+        .partner-badge:nth-child(4) .partner-logo {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         section {
@@ -659,16 +728,24 @@
                 padding: 2rem;
             }
 
-            .trust-badges {
-                gap: 2rem;
-            }
-
             .contact-content {
                 padding: 2rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .partners-section {
+                padding: 2rem 5%;
+            }
+
+            .partners-grid {
+                gap: 1.5rem;
+            }
+
+            .partner-badge {
+                padding: 0.8rem 1.5rem;
             }
         }
     </style>
@@ -696,20 +773,6 @@
             <div class="cta-group">
                 <a href="#contact" class="btn btn-primary">Work With Us</a>
                 <a href="#services" class="btn btn-secondary">See What We Do</a>
-            </div>
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <div class="trust-badge-number">Same Day</div>
-                    <div class="trust-badge-text">Response Time</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-number">100%</div>
-                    <div class="trust-badge-text">Client Satisfaction</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="trust-badge-number">Select</div>
-                    <div class="trust-badge-text">Partnerships Only</div>
-                </div>
             </div>
         </div>
     </section>
@@ -789,6 +852,26 @@
                     <li>Technical support</li>
                     <li>Strategic guidance</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <div class="partners-container">
+            <p class="partners-label">Trusted Partners</p>
+            <div class="partners-grid">
+                <div class="partner-badge">
+                    <div class="partner-logo">Google Partner</div>
+                </div>
+                <div class="partner-badge">
+                    <div class="partner-logo">HubSpot</div>
+                </div>
+                <div class="partner-badge">
+                    <div class="partner-logo">Shopify</div>
+                </div>
+                <div class="partner-badge">
+                    <div class="partner-logo">Recharge</div>
+                </div>
             </div>
         </div>
     </section>
