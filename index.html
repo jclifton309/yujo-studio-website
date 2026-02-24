@@ -861,6 +861,108 @@
             color: var(--primary);
         }
 
+        /* Hamburger toggle button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Mobile dropdown menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            left: 0;
+            width: 100%;
+            background: rgba(244, 241, 234, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--border);
+            z-index: 999;
+            flex-direction: column;
+            padding: 1rem 1.5rem 1.5rem;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu ul li a {
+            display: block;
+            padding: 0.9rem 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--text-primary);
+        }
+
+        .mobile-menu ul li:last-child a {
+            border-bottom: none;
+        }
+
+        .mobile-nav-cta {
+            display: block;
+            background: var(--accent);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            border-bottom: none !important;
+        }
+
+        .mobile-nav-cta:hover {
+            background: #C76A43;
+            transform: translateY(-1px);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-content {
@@ -868,17 +970,15 @@
             }
 
             .nav-links {
-                gap: 0.75rem;
-            }
-
-            .nav-links li:not(:last-child) {
                 display: none;
             }
 
-            .nav-cta {
-                padding: 0.5rem 1.25rem;
-                font-size: 0.9rem;
-                white-space: nowrap;
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
             }
 
             .container {
@@ -944,8 +1044,21 @@
                 <li><a href="calculator.html">Revenue Calculator</a></li>
                 <li><a href="#contact" class="nav-cta">Get Started</a></li>
             </ul>
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="calculator.html">Revenue Calculator</a></li>
+            <li><a href="#contact" class="mobile-nav-cta">Get Started</a></li>
+        </ul>
+    </div>
 
     <section class="hero">
         <div class="container">
@@ -1254,6 +1367,45 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuToggle && mobileMenu) {
+            const navEl = document.querySelector('nav');
+
+            // Position dropdown just below the nav bar
+            function setMenuTop() {
+                mobileMenu.style.top = navEl.offsetHeight + 'px';
+            }
+            setMenuTop();
+            window.addEventListener('resize', setMenuTop);
+
+            menuToggle.addEventListener('click', function() {
+                const isOpen = mobileMenu.classList.toggle('open');
+                menuToggle.classList.toggle('open');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            });
+
+            // Close menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('open');
+                    menuToggle.classList.remove('open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navEl.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('open');
+                    menuToggle.classList.remove('open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
