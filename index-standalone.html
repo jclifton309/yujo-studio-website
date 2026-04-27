@@ -1,0 +1,2731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yujo Studio — Bilingual Digital Agency | US & Japan Markets</title>
+  <meta name="description" content="Yujo Studio is a full-service bilingual agency for B2B and DTC brands growing between the US and Japan. Native Japanese fluency. One team. Every service your brand needs." />
+  <meta name="keywords" content="bilingual agency, US Japan marketing, DTC Japan, B2B Japan, Klaviyo, Shopify Japan, bilingual digital agency, Long Beach CA" />
+  <meta property="og:title" content="Yujo Studio — Bilingual Digital Agency" />
+  <meta property="og:description" content="Full-service bilingual agency for brands growing between the US and Japan. Native fluency. No handoffs. No gaps." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #F4F1ED;
+      color: #111010;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    :root {
+      --red: #C0392B;
+      --black: #111010;
+      --off-white: #F4F1ED;
+      --warm-mid: #E8E4DF;
+      --muted: #6B6560;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    ::selection { background: var(--red); color: #fff; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--off-white); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    /* Utility */
+    .serif { font-family: var(--serif); }
+    .red { color: var(--red); }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(244, 241, 237, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,16,16,0.08);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+    }
+    .nav-inner {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .logo-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      margin: 0 5px;
+      position: relative;
+      top: -1px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin: 0 auto;
+      list-style: none;
+      white-space: nowrap;
+    }
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .lang-toggle {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid rgba(17,16,16,0.2);
+      overflow: hidden;
+    }
+    .lang-toggle span {
+      padding: 6px 10px;
+      transition: all 0.2s;
+    }
+    .lang-toggle span.active {
+      background: var(--black);
+      color: var(--off-white);
+    }
+    .lang-toggle span:not(.active):hover {
+      background: rgba(17,16,16,0.06);
+    }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: #a32d22; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--black);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: 1px solid var(--black);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary:hover { background: var(--black); color: var(--off-white); }
+
+    /* Sections */
+    section { width: 100%; }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 64px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 80px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(192,57,43,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      padding: 80px 0;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--red);
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(44px, 4.5vw, 68px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--red);
+    }
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border: 1px solid rgba(17,16,16,0.2);
+      color: var(--black);
+      background: transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .hero-tag:hover { background: var(--black); color: var(--off-white); cursor: default; }
+    .hero-tag.tag-red {
+      border-color: var(--red);
+      color: var(--red);
+    }
+    .hero-tag.tag-red:hover { background: var(--red); color: #fff; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(17,16,16,0.12);
+    }
+    .stat {
+      padding: 28px 24px;
+      border-right: 1px solid rgba(17,16,16,0.12);
+      border-bottom: 1px solid rgba(17,16,16,0.12);
+    }
+    .stat:nth-child(even) { border-right: none; }
+    .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    .stat-num span { color: var(--red); }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    /* Diff section */
+    .diff-section {
+      padding: 120px 0;
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+    }
+    .diff-header {
+      margin-bottom: 60px;
+    }
+    .diff-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 480px;
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(17,16,16,0.12);
+    }
+    .diff-col {
+      padding: 48px;
+    }
+    .diff-col:first-child {
+      border-right: 1px solid rgba(17,16,16,0.12);
+    }
+    .diff-col-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .diff-col-title::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--warm-mid);
+      border: 1px solid rgba(17,16,16,0.2);
+    }
+    .diff-col.yujo .diff-col-title::before {
+      background: var(--red);
+      border-color: var(--red);
+    }
+    .diff-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .diff-item {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(17,16,16,0.08);
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .diff-item:last-child { border-bottom: none; }
+    .diff-col.yujo .diff-item { color: var(--black); }
+    .diff-item-icon {
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      opacity: 0.4;
+    }
+    .diff-col.yujo .diff-item-icon { opacity: 1; color: var(--red); }
+
+    /* Services */
+    .services-section {
+      padding: 120px 0;
+      background: var(--black);
+      color: var(--off-white);
+      border-bottom: 1px solid rgba(244,241,237,0.08);
+    }
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+    .services-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .services-label { color: rgba(244,241,237,0.4); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(244,241,237,0.1);
+    }
+    .service-card {
+      padding: 40px 36px;
+      border-right: 1px solid rgba(244,241,237,0.1);
+      border-bottom: 1px solid rgba(244,241,237,0.1);
+      position: relative;
+    }
+    .service-card:hover { background: rgba(244,241,237,0.04); }
+    .service-card:nth-child(3n) { border-right: none; }
+    .service-card:nth-child(4), .service-card:nth-child(5), .service-card:nth-child(6) { border-bottom: none; }
+    .service-num {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(244,241,237,0.25);
+      margin-bottom: 20px;
+      letter-spacing: 0.1em;
+    }
+    .service-tag {
+      position: absolute;
+      top: 36px;
+      right: 32px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      background: var(--red);
+      color: #fff;
+    }
+    .service-title {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: var(--off-white);
+    }
+    .service-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(244,241,237,0.45);
+      margin-bottom: 24px;
+    }
+    .service-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .service-bullets li {
+      font-size: 12px;
+      color: rgba(244,241,237,0.55);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .service-bullets li::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* Tech stack */
+    .tech-section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+      overflow: hidden;
+      background: var(--black);
+    }
+    .tech-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      padding: 0 48px;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tech-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .tech-title {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--off-white);
+    }
+    .tech-count {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(244,241,237,0.3);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .tech-track-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .tech-track-wrap::before,
+    .tech-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .tech-track-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--black), transparent);
+    }
+    .tech-track-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--black), transparent);
+    }
+    .tech-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .tech-track:hover { animation-play-state: paused; }
+    .tech-track-row {
+      display: flex;
+      gap: 0;
+    }
+    .tech-pill {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-right: 1px solid rgba(244,241,237,0.08);
+      border-top: 1px solid rgba(244,241,237,0.08);
+      border-bottom: 1px solid rgba(244,241,237,0.08);
+      color: rgba(244,241,237,0.4);
+      background: transparent;
+      transition: all 0.2s;
+      cursor: default;
+      white-space: nowrap;
+    }
+    .tech-pill:first-child { border-left: 1px solid rgba(244,241,237,0.08); }
+    .tech-pill:hover {
+      color: var(--off-white);
+      background: rgba(244,241,237,0.04);
+    }
+    .tech-pill.featured {
+      color: var(--red);
+      border-color: rgba(192,57,43,0.3);
+      background: rgba(192,57,43,0.06);
+    }
+    .tech-pill.featured:hover {
+      background: rgba(192,57,43,0.12);
+    }
+
+    /* Who we work with */
+    .who-section {
+      padding: 120px 0;
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+    }
+    .who-header { margin-bottom: 60px; }
+    .who-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 560px;
+    }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(17,16,16,0.12);
+    }
+    .who-col {
+      border-right: 1px solid rgba(17,16,16,0.12);
+    }
+    .who-col:last-child { border-right: none; }
+    .who-col-header {
+      padding: 28px 36px;
+      border-bottom: 1px solid rgba(17,16,16,0.12);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .who-col-header.b2b { background: var(--black); color: var(--off-white); }
+    .who-col-header.dtc { background: var(--red); color: #fff; }
+    .who-col-header.expansion { background: var(--warm-mid); color: var(--black); }
+    .who-col-body {
+      padding: 36px;
+    }
+    .who-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .who-item {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(17,16,16,0.07);
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--black);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .who-item:last-child { border-bottom: none; }
+    .who-item::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--black);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* Process */
+    .process-section {
+      padding: 120px 0;
+      background: var(--warm-mid);
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+    }
+    .process-header { margin-bottom: 60px; }
+    .process-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 400px;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(17,16,16,0.12);
+      background: var(--off-white);
+    }
+    .process-step {
+      padding: 48px 40px;
+      border-right: 1px solid rgba(17,16,16,0.12);
+      position: relative;
+    }
+    .process-step:last-child { border-right: none; }
+    .step-num {
+      font-family: var(--serif);
+      font-size: 72px;
+      font-weight: 300;
+      color: rgba(17,16,16,0.06);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .step-title {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .step-connector {
+      position: absolute;
+      top: 48px;
+      right: -16px;
+      width: 32px;
+      height: 32px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 11px;
+      z-index: 1;
+    }
+
+    /* Contact Form */
+    .contact-section {
+      padding: 120px 0;
+      background: var(--off-white);
+      border-top: 1px solid rgba(17,16,16,0.1);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-left {}
+    .contact-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .contact-title em { font-style: italic; color: var(--red); }
+    .contact-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 360px;
+    }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--black);
+    }
+    .contact-detail-item span:first-child {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: 60px;
+      flex-shrink: 0;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(17,16,16,0.12);
+      background: white;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid rgba(17,16,16,0.08);
+    }
+    .form-row.single {
+      grid-template-columns: 1fr;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      border-right: 1px solid rgba(17,16,16,0.08);
+      position: relative;
+    }
+    .form-field:last-child { border-right: none; }
+    .form-field label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 14px 20px 0;
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--black);
+      padding: 8px 20px 14px;
+      width: 100%;
+      resize: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-field textarea { min-height: 100px; }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(17,16,16,0.25); }
+    .form-field:focus-within {
+      background: rgba(192,57,43,0.02);
+    }
+    .form-field:focus-within label { color: var(--red); }
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 20px;
+      background: var(--black);
+    }
+    .form-note {
+      font-size: 11px;
+      color: rgba(244,241,237,0.3);
+      line-height: 1.5;
+    }
+    .form-market-options {
+      display: flex;
+      gap: 0;
+      padding: 8px 20px 14px;
+    }
+    .form-market-opt {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border: 1px solid rgba(17,16,16,0.15);
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-right: 6px;
+      user-select: none;
+      color: var(--muted);
+    }
+    .form-market-opt.selected {
+      background: var(--black);
+      color: var(--off-white);
+      border-color: var(--black);
+    }
+    .form-success {
+      padding: 60px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .form-success-mark {
+      width: 48px;
+      height: 48px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+    }
+    .form-success h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+    }
+    .form-success p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* CTA Band */
+    .cta-band {
+      padding: 120px 0;
+      background: var(--black);
+      color: var(--off-white);
+    }
+    .cta-band-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+    .cta-headline {
+      font-family: var(--serif);
+      font-size: clamp(32px, 3.5vw, 56px);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 680px;
+    }
+    .cta-headline em { font-style: italic; color: var(--red); }
+    .btn-primary-light {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-primary-light:hover { background: #a32d22; }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(244,241,237,0.08);
+      padding: 48px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--off-white);
+      display: flex;
+      align-items: center;
+    }
+    .footer-location {
+      font-size: 12px;
+      color: rgba(244,241,237,0.35);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+    .footer-email {
+      font-size: 14px;
+      color: rgba(244,241,237,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-email:hover { color: var(--red); }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(244,241,237,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    /* Japanese text */
+    .ja {
+      font-family: 'Hiragino Kaku Gothic Pro', 'Noto Sans JP', sans-serif;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .fade-up-delay-1 { animation-delay: 0.1s; animation-fill-mode: both; }
+    .fade-up-delay-2 { animation-delay: 0.2s; animation-fill-mode: both; }
+    .fade-up-delay-3 { animation-delay: 0.35s; animation-fill-mode: both; }
+    .fade-up-delay-4 { animation-delay: 0.5s; animation-fill-mode: both; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Noise texture overlay — removed for standalone compatibility */
+
+    /* Service card hover */
+    .service-card {
+      transition: background 0.3s, border-top 0.2s;
+      border-top: 2px solid transparent;
+    }
+    .service-card:hover { border-top-color: var(--red); }
+
+    /* Our Work */
+    .work-section {
+      padding: 120px 0;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+    }
+    .work-header { margin-bottom: 60px; }
+    .work-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 480px;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(17,16,16,0.1);
+    }
+    .work-card {
+      background: var(--off-white);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .work-card:hover::before { transform: scaleX(1); }
+    .work-card:hover { background: #EFECE8; }
+    .work-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .work-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      background: var(--warm-mid);
+      color: var(--black);
+    }
+    .work-tag.red { background: var(--red); color: white; }
+    .work-market {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .work-client {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--black);
+    }
+    .work-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+      flex: 1;
+    }
+    .work-result {
+      border-top: 1px solid rgba(17,16,16,0.1);
+      padding-top: 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .work-result-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--red);
+      line-height: 1;
+    }
+    .work-result-label {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      padding: 100px 0;
+      background: var(--black);
+      border-bottom: 1px solid rgba(244,241,237,0.06);
+    }
+    .testimonials-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(244,241,237,0.08);
+    }
+    .testimonial-card {
+      background: var(--black);
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .testimonial-quote-mark {
+      font-family: var(--serif);
+      font-size: 72px;
+      line-height: 0.6;
+      color: var(--red);
+      font-weight: 300;
+    }
+    .testimonial-text {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: rgba(244,241,237,0.9);
+      font-style: italic;
+      flex: 1;
+    }
+    .testimonial-attr {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 1px solid rgba(244,241,237,0.1);
+      padding-top: 24px;
+    }
+    .testimonial-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--off-white);
+      letter-spacing: 0.04em;
+    }
+    .testimonial-role {
+      font-size: 11px;
+      color: rgba(244,241,237,0.35);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Pricing */
+    .pricing-section {
+      padding: 120px 0;
+      background: var(--warm-mid);
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+    }
+    .pricing-header { margin-bottom: 16px; }
+    .pricing-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 480px;
+      margin-bottom: 12px;
+    }
+    .pricing-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 56px;
+      max-width: 440px;
+      line-height: 1.65;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(17,16,16,0.12);
+    }
+    .pricing-card {
+      background: var(--off-white);
+      padding: 44px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .pricing-card.featured {
+      background: var(--black);
+      color: var(--off-white);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -1px; right: 36px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: white;
+      padding: 5px 10px;
+    }
+    .pricing-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .pricing-card.featured .pricing-tier { color: rgba(244,241,237,0.5); }
+    .pricing-name {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .pricing-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+    }
+    .pricing-card.featured .pricing-desc { color: rgba(244,241,237,0.45); border-color: rgba(244,241,237,0.1); }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+      flex: 1;
+    }
+    .pricing-features li {
+      font-size: 13px;
+      color: var(--black);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.4;
+    }
+    .pricing-card.featured .pricing-features li { color: rgba(244,241,237,0.75); }
+    .pricing-features li::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+    .pricing-cta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .pricing-card.featured .pricing-cta-label { color: rgba(244,241,237,0.3); }
+
+    /* FAQ */
+    .faq-section {
+      padding: 120px 0;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+    }
+    .faq-header { margin-bottom: 60px; }
+    .faq-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 480px;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 80px;
+    }
+    .faq-item {
+      border-top: 1px solid rgba(17,16,16,0.1);
+      padding: 0;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      padding: 22px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      line-height: 1.4;
+    }
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(17,16,16,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      color: var(--red);
+    }
+    .faq-item.open .faq-icon {
+      background: var(--red);
+      border-color: var(--red);
+      color: white;
+    }
+    .faq-answer {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+    /* ── MOBILE NAV ─────────────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all 0.2s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(17,16,16,0.1);
+      z-index: 99;
+      flex-direction: column;
+      padding: 24px 32px 32px;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(17,16,16,0.07);
+      letter-spacing: 0.02em;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-right .lang-toggle { display: none; }
+
+      .container { padding: 0 24px; }
+
+      /* Hero */
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; padding: 48px 0; }
+      .hero-right { order: -1; }
+      .hero-headline { font-size: 36px; }
+      .hero-sub { max-width: 100%; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+
+      /* Sections padding */
+      .diff-section, .who-section, .work-section,
+      .process-section, .pricing-section, .faq-section,
+      .contact-section { padding: 72px 0; }
+      .services-section { padding: 72px 0; }
+
+      /* Grids → single col */
+      .diff-grid { grid-template-columns: 1fr; }
+      .diff-col:first-child { border-right: none; border-bottom: 1px solid rgba(17,16,16,0.12); }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card:nth-child(3n) { border-right: 1px solid rgba(244,241,237,0.1); }
+      .service-card:nth-child(n) { border-bottom: 1px solid rgba(244,241,237,0.1); }
+      .service-card:last-child { border-bottom: none; }
+      .work-grid { grid-template-columns: 1fr; }
+      .testimonials-inner { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid rgba(17,16,16,0.12); }
+      .process-step:last-child { border-bottom: none; }
+      .step-connector { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
+      .who-col { border-right: none; border-bottom: 1px solid rgba(17,16,16,0.12); }
+      .who-col:last-child { border-bottom: none; }
+      .faq-grid { grid-template-columns: 1fr; gap: 0; }
+
+      /* Tech */
+      .tech-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 0 24px; }
+
+      /* Contact */
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-field { border-right: none; border-bottom: 1px solid rgba(17,16,16,0.08); }
+      .form-field:last-child { border-bottom: none; }
+
+      /* CTA band */
+      .cta-band-inner { flex-direction: column; gap: 32px; text-align: center; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+      /* Services header */
+      .services-header { flex-direction: column; gap: 16px; }
+
+      /* Hero SVG */
+      .hero-right svg:first-child { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-headline { font-size: 30px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .stat-num { font-size: 32px; }
+      .diff-title, .who-title, .work-title, .pricing-title,
+      .faq-title, .contact-title, .services-title, .process-title { font-size: 28px; }
+      .cta-headline { font-size: 26px; }
+      .form-market-options { flex-wrap: wrap; }
+    }
+  </style>
+  <template id="__bundler_thumbnail" data-bg-color="#F4F1ED">
+    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Nav bar -->
+      <rect x="0" y="0" width="400" height="28" fill="#F4F1ED"/>
+      <rect x="24" y="10" width="60" height="8" rx="1" fill="#111010" opacity="0.8"/>
+      <rect x="300" y="10" width="48" height="8" rx="1" fill="#C0392B"/>
+      <!-- Hero headline blocks -->
+      <rect x="24" y="48" width="160" height="14" rx="1" fill="#111010" opacity="0.85"/>
+      <rect x="24" y="68" width="120" height="14" rx="1" fill="#C0392B" opacity="0.8"/>
+      <rect x="24" y="88" width="140" height="8" rx="1" fill="#111010" opacity="0.2"/>
+      <rect x="24" y="102" width="110" height="8" rx="1" fill="#111010" opacity="0.15"/>
+      <!-- CTA buttons -->
+      <rect x="24" y="120" width="72" height="20" fill="#C0392B"/>
+      <rect x="104" y="120" width="72" height="20" fill="none" stroke="#111010" strokeWidth="1"/>
+      <!-- Right side: dual circle graphic -->
+      <circle cx="290" cy="100" r="55" stroke="#111010" strokeWidth="1.5" fill="none" opacity="0.5"/>
+      <circle cx="330" cy="100" r="55" stroke="#C0392B" strokeWidth="1.5" fill="none" opacity="0.6"/>
+      <circle cx="310" cy="100" r="3" fill="#C0392B"/>
+      <!-- Divider -->
+      <line x1="0" y1="170" x2="400" y2="170" stroke="#111010" strokeWidth="0.5" opacity="0.15"/>
+      <!-- Section pills -->
+      <rect x="24" y="178" width="60" height="12" rx="1" fill="#111010" opacity="0.08"/>
+      <rect x="92" y="178" width="60" height="12" rx="1" fill="#111010" opacity="0.08"/>
+      <rect x="160" y="178" width="60" height="12" rx="1" fill="#111010" opacity="0.08"/>
+    </svg>
+  </template>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel"
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+function TweakColor({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <input type="color" className="twk-swatch" value={value}
+             onChange={(e) => onChange(e.target.value)} />
+    </div>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+</script>
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "accentColor": "#C0392B",
+      "bgColor": "#F4F1ED",
+      "darkBg": "#111010",
+      "bodyFont": "DM Sans",
+      "displayFont": "Cormorant Garamond",
+      "heroLayout": "split",
+      "heroHeadline": "The agency that speaks both markets fluently.",
+      "heroSub": "We're a bilingual, full-service studio built for B2B and DTC brands that are serious about the US–Japan opportunity. No handoffs. No gaps. Just growth."
+    }/*EDITMODE-END*/;
+
+    const services = [
+      {
+        num: "01",
+        title: "Branding & Design",
+        desc: "Identity systems built to resonate across two cultural markets — without losing what makes your brand distinct.",
+        bullets: ["Brand strategy & positioning", "Visual identity systems", "Bilingual brand guidelines", "Packaging & print collateral"],
+        tag: null
+      },
+      {
+        num: "02",
+        title: "Digital Marketing",
+        desc: "Performance-driven campaigns across US and Japan channels, with native fluency in both markets.",
+        bullets: ["Google Ads (US + JP)", "Meta & social campaigns", "Influencer & PR outreach", "Analytics & reporting"],
+        tag: null
+      },
+      {
+        num: "03",
+        title: "E-commerce",
+        desc: "From store architecture to cross-border logistics — we build and optimize DTC storefronts that convert globally.",
+        bullets: ["Shopify & BigCommerce builds", "Cross-border localization", "Conversion rate optimization", "Subscription & reorder flows"],
+        tag: null
+      },
+      {
+        num: "04",
+        title: "Email & Retention",
+        desc: "Klaviyo-led lifecycle programs that keep customers buying — with bilingual flows built for both markets.",
+        bullets: ["Klaviyo strategy & build", "Automated lifecycle flows", "Segmentation & personalization", "Bilingual campaign copy"],
+        tag: null
+      },
+      {
+        num: "05",
+        title: "Systems & Automation",
+        desc: "We connect your tools so your team moves faster — from CRM logic to Zapier workflows that scale.",
+        bullets: ["HubSpot & Salesforce setup", "Zapier & Make workflows", "B2B pipeline automation", "Reporting dashboards"],
+        tag: null
+      },
+      {
+        num: "06",
+        title: "Web Development",
+        desc: "Fast, bilingual websites and landing pages built to perform — on Webflow, WordPress, or custom.",
+        bullets: ["Webflow & WordPress builds", "Bilingual CMS architecture", "Landing page optimization", "Speed & SEO performance"],
+        tag: null
+      }
+    ];
+
+    const techStack = [
+      { name: "Klaviyo", featured: true },
+      { name: "Shopify", featured: true },
+      { name: "Recharge", featured: false },
+      { name: "HubSpot", featured: false },
+      { name: "Google Ads", featured: false },
+      { name: "Meta Ads", featured: false },
+      { name: "LinkedIn Ads", featured: false },
+      { name: "Zapier", featured: false },
+      { name: "Figma", featured: false },
+      { name: "Adobe CC", featured: false },
+      { name: "Webflow", featured: false },
+      { name: "WordPress", featured: false },
+      { name: "WooCommerce", featured: false },
+      { name: "Salesforce", featured: false },
+      { name: "ActiveCampaign", featured: false },
+      { name: "BigCommerce", featured: false },
+      { name: "Stripe", featured: false },
+      { name: "Notion", featured: false },
+      { name: "Google Analytics", featured: false }
+    ];
+
+    function ContactForm({ t }) {
+      const [fields, setFields] = useState({ name:'', email:'', brand:'', message:'' });
+      const [market, setMarket] = useState('');
+      const [submitted, setSubmitted] = useState(false);
+      const [loading, setLoading] = useState(false);
+
+      const set = (k, v) => setFields(f => ({...f, [k]: v}));
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!fields.name || !fields.email) return;
+        setLoading(true);
+        // TODO: wire to backend / form handler in Claude Code export
+        setTimeout(() => { setLoading(false); setSubmitted(true); }, 800);
+      };
+
+      if (submitted) return (
+        <div className="contact-form">
+          <div className="form-success">
+            <div className="form-success-mark">✓</div>
+            <h3>{t("We'll be in touch.", "ご連絡お待ちしております。")}</h3>
+            <p>{t("Expect to hear from us within one business day.", "1営業日以内にご連絡いたします。")}</p>
+          </div>
+        </div>
+      );
+
+      const markets = [
+        { id: 'us-jp', label: 'US → Japan' },
+        { id: 'jp-us', label: 'Japan → US' },
+        { id: 'both', label: t('Both', '両方') },
+        { id: 'unsure', label: t("Not sure yet", "未定") }
+      ];
+
+      return (
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="form-row">
+            <div className="form-field">
+              <label>{t("Your Name", "お名前")} *</label>
+              <input type="text" placeholder={t("Jane Smith", "山田 太郎")} value={fields.name} onChange={e=>set('name',e.target.value)} required />
+            </div>
+            <div className="form-field">
+              <label>{t("Email Address", "メールアドレス")} *</label>
+              <input type="email" placeholder="hello@brand.com" value={fields.email} onChange={e=>set('email',e.target.value)} required />
+            </div>
+          </div>
+          <div className="form-row single">
+            <div className="form-field">
+              <label>{t("Brand / Company", "ブランド・会社名")}</label>
+              <input type="text" placeholder={t("Your brand name", "ブランド名")} value={fields.brand} onChange={e=>set('brand',e.target.value)} />
+            </div>
+          </div>
+          <div className="form-row single" style={{borderBottom:'1px solid rgba(17,16,16,0.08)'}}>
+            <div className="form-field" style={{borderRight:'none'}}>
+              <label>{t("Market Interest", "対象市場")}</label>
+              <div className="form-market-options">
+                {markets.map(m => (
+                  <div key={m.id} className={`form-market-opt${market===m.id?' selected':''}`} onClick={()=>setMarket(market===m.id?'':m.id)}>{m.label}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="form-row single" style={{borderBottom:'none'}}>
+            <div className="form-field" style={{borderRight:'none'}}>
+              <label>{t("Tell us about your brand", "ブランドについてお聞かせください")}</label>
+              <textarea placeholder={t("Where are you now, and where do you want to go?", "現状と目標を教えてください。")} value={fields.message} onChange={e=>set('message',e.target.value)} />
+            </div>
+          </div>
+          <div className="form-submit-row">
+            <div className="form-note">
+              {t("Free discovery call included.", "無料ディスカバリーコール付き。")}<br />
+              {t("No commitment required.", "コミットメント不要。")}
+            </div>
+            <button type="submit" className="btn-primary" disabled={loading} style={{opacity:loading?0.6:1}}>
+              {loading ? t("Sending…", "送信中…") : t("Send Message", "送信する")}
+            </button>
+          </div>
+        </form>
+      );
+    }
+
+    const caseStudies = [
+      {
+        tags: ["DTC", "E-commerce"],
+        market: "US → Japan",
+        client: "US Skincare Brand",
+        desc: "Launched a fully localized Shopify Japan storefront with bilingual email flows, influencer seeding, and a JP-specific retention program built in Klaviyo.",
+        resultNum: "3x",
+        resultLabel: "email list growth\nin 90 days"
+      },
+      {
+        tags: ["DTC", "Digital Marketing"],
+        market: "Japan → US",
+        client: "Japanese Supplement Brand",
+        desc: "Built the brand's entire US digital presence from zero — identity, Shopify store, paid media, and a Klaviyo welcome series optimized for US consumer behavior.",
+        resultNum: "$50K",
+        resultLabel: "first 60 days\nin the US market"
+      },
+      {
+        tags: ["B2B", "Systems"],
+        market: "US → Japan",
+        client: "B2B SaaS Company",
+        desc: "Developed bilingual sales materials, HubSpot pipeline logic, and an outreach strategy tailored to Japanese business culture — enabling direct partnership conversations.",
+        resultNum: "3",
+        resultLabel: "JP distribution\npartners in Q1"
+      }
+    ];
+
+    const testimonials = [
+      {
+        text: "Working with Yujo felt like having an in-house team in both markets. We never worried about cultural missteps — they caught things we didn't even know to look for.",
+        name: "Sarah K.",
+        role: "Founder, US Skincare Brand"
+      },
+      {
+        text: "Most agencies either know Japan or know DTC. Yujo is the first we've found that genuinely knows both. The Klaviyo flows they built for our JP audience outperformed our US flows within 60 days.",
+        name: "Kenji T.",
+        role: "CMO, Japanese Consumer Brand"
+      }
+    ];
+
+    const pricingTiers = [
+      {
+        tier: "Tier 01",
+        name: "Project",
+        desc: "One-time engagements with a clear scope and deliverable. Ideal for brands that need a specific thing done right — a new identity, a website, a campaign launch.",
+        features: [
+          "Fixed scope & timeline",
+          "Dedicated project lead",
+          "Bilingual deliverables",
+          "Post-launch support period",
+          "Suitable for one or both markets"
+        ],
+        cta: "Let's scope it",
+        featured: false
+      },
+      {
+        tier: "Tier 02",
+        name: "Retainer",
+        desc: "An ongoing monthly partnership for brands actively growing in one or both markets. You get a dedicated team, consistent strategy, and no handoff friction.",
+        features: [
+          "Monthly strategy & reporting",
+          "Dedicated bilingual team",
+          "Cross-service coordination",
+          "Priority turnaround",
+          "Scales with your growth"
+        ],
+        cta: "Start a conversation",
+        featured: true,
+        badge: "Most Popular"
+      },
+      {
+        tier: "Tier 03",
+        name: "Full Partnership",
+        desc: "Our deepest engagement — end-to-end ownership of your marketing, creative, and growth across the US and Japan. For brands going all-in.",
+        features: [
+          "Full-funnel ownership",
+          "All six service areas",
+          "Embedded team model",
+          "Quarterly business reviews",
+          "Custom SLA & reporting"
+        ],
+        cta: "Tell us your goals",
+        featured: false
+      }
+    ];
+
+    const faqs = [
+      {
+        q: "Do I need to already be operating in Japan to work with you?",
+        a: "Not at all. Many of our clients come to us at the very beginning of their Japan strategy. We help you figure out if and how to enter, then execute it."
+      },
+      {
+        q: "What types of brands do you typically work with?",
+        a: "We work best with B2B companies and DTC consumer brands that are serious about the US–Japan opportunity — whether that's entering Japan from the US, or building a US presence from Japan."
+      },
+      {
+        q: "How do engagements typically start?",
+        a: "Every engagement starts with a free discovery call. We learn about your brand, your goals, and your current situation. From there we build a clear scope and proposal — no vague retainers."
+      },
+      {
+        q: "Do you handle Japanese copywriting natively?",
+        a: "Yes. We write Japanese copy natively — not translated from English. This matters enormously for tone, cultural nuance, and conversion. It's one of the core reasons clients come to us."
+      },
+      {
+        q: "What's a typical budget or engagement size?",
+        a: "It varies by scope and service mix. Project engagements start from a defined scope conversation — we'll be direct about fit. Retainers are sized to what your growth stage actually needs, not a fixed package."
+      },
+      {
+        q: "Can you work with our existing tools and platforms?",
+        a: "Yes. We work with your stack. Whether you're on Shopify, HubSpot, Salesforce, or something else entirely — we adapt. The tools listed on our site are ones we're especially strong in, but they're not a requirement."
+      }
+    ];
+
+    function useReveal() {
+      useEffect(() => {
+        const els = document.querySelectorAll('.reveal');
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        els.forEach(el => obs.observe(el));
+        return () => obs.disconnect();
+      }, []);
+    }
+
+    function FAQItem({ q, a }) {
+      const [open, setOpen] = useState(false);
+      return (
+        <div className={`faq-item${open ? ' open' : ''}`}>
+          <button className="faq-question" onClick={() => setOpen(!open)}>
+            <span>{q}</span>
+            <span className="faq-icon">{open ? '−' : '+'}</span>
+          </button>
+          <div className="faq-answer">{a}</div>
+        </div>
+      );
+    }
+
+    const serviceIcons = [
+      // Branding & Design
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="1" y="1" width="34" height="34" stroke="#C0392B" strokeWidth="1"/><rect x="8" y="8" width="20" height="20" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><circle cx="18" cy="18" r="4" fill="#C0392B"/></svg>,
+      // Digital Marketing
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" stroke="#C0392B" strokeWidth="1"/><line x1="2" y1="18" x2="34" y2="18" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="18" y1="2" x2="18" y2="34" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><circle cx="18" cy="18" r="2" fill="#C0392B"/><path d="M18 2 C24 8 24 28 18 34" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75" fill="none"/><path d="M18 2 C12 8 12 28 18 34" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75" fill="none"/></svg>,
+      // E-commerce
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="6" y="12" width="24" height="18" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><path d="M12 12 C12 8 24 8 24 12" stroke="#C0392B" strokeWidth="1" fill="none"/><line x1="6" y1="20" x2="30" y2="20" stroke="rgba(244,241,237,0.2)" strokeWidth="0.5"/><circle cx="13" cy="27" r="1.5" fill="#C0392B"/><circle cx="23" cy="27" r="1.5" fill="#C0392B"/></svg>,
+      // Email & Retention
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="4" y="9" width="28" height="20" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><path d="M4 9 L18 20 L32 9" stroke="#C0392B" strokeWidth="1" fill="none"/><line x1="4" y1="29" x2="32" y2="29" stroke="rgba(244,241,237,0.15)" strokeWidth="0.5"/></svg>,
+      // Systems & Automation
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="8" cy="10" r="4" stroke="#C0392B" strokeWidth="1"/><circle cx="28" cy="10" r="4" stroke="rgba(244,241,237,0.35)" strokeWidth="0.75"/><circle cx="18" cy="28" r="4" stroke="rgba(244,241,237,0.35)" strokeWidth="0.75"/><line x1="12" y1="10" x2="24" y2="10" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/><line x1="10" y1="13" x2="15" y2="24" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/><line x1="26" y1="13" x2="21" y2="24" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/></svg>,
+      // Web Development
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="3" y="6" width="30" height="24" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="3" y1="13" x2="33" y2="13" stroke="rgba(244,241,237,0.2)" strokeWidth="0.5"/><circle cx="7" cy="9.5" r="1.5" fill="rgba(244,241,237,0.25)"/><circle cx="11" cy="9.5" r="1.5" fill="rgba(244,241,237,0.25)"/><circle cx="15" cy="9.5" r="1.5" fill="#C0392B"/><path d="M10 22 L14 18 L10 22Z" stroke="#C0392B" strokeWidth="1" fill="none" strokeLinejoin="round"/><line x1="14" y1="18" x2="18" y2="26" stroke="#C0392B" strokeWidth="1"/><line x1="21" y1="18" x2="26" y2="22" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="26" y1="22" x2="21" y2="26" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/></svg>
+    ];
+
+    function App() {
+      const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const [lang, setLang] = useState("EN");
+      const [navScrolled, setNavScrolled] = useState(false);
+      const [mobileOpen, setMobileOpen] = useState(false);
+
+      useEffect(() => {
+        const onScroll = () => setNavScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+      }, []);
+
+      // Apply tweaks
+      useEffect(() => {
+        document.documentElement.style.setProperty('--red', tweaks.accentColor);
+        document.documentElement.style.setProperty('--off-white', tweaks.bgColor);
+        document.documentElement.style.setProperty('--black', tweaks.darkBg);
+      }, [tweaks]);
+
+      useReveal();
+
+      const t = (en, ja) => lang === "EN" ? en : ja;
+
+      return (
+        <>
+          {/* NAV */}
+          <nav style={{ boxShadow: navScrolled ? '0 1px 20px rgba(0,0,0,0.06)' : 'none' }}>
+            <div className="nav-inner">
+              <a className="logo" href="#">
+                Yujo<span className="logo-dot"></span>Studio
+              </a>
+              <ul className="nav-links">
+                <li><a href="#services">{t("Services", "サービス")}</a></li>
+                <li><a href="#work">{t("Our Work", "実績")}</a></li>
+                <li><a href="#pricing">{t("Pricing", "料金")}</a></li>
+                <li><a href="#faq">{t("FAQ", "よくある質問")}</a></li>
+              </ul>
+              <div className="nav-right">
+                <div className="lang-toggle">
+                  <span className={lang === "EN" ? "active" : ""} onClick={() => setLang("EN")}>EN</span>
+                  <span className={lang === "JA" ? "active" : ""} onClick={() => setLang("JA")}>日本語</span>
+                </div>
+                <a className="btn-primary" href="#contact">{t("Contact Us", "お問い合わせ")}</a>
+                <button className="nav-hamburger" onClick={() => setMobileOpen(o => !o)} aria-label="Menu">
+                  <span style={{transform: mobileOpen ? 'rotate(45deg) translate(4px,4px)' : 'none'}}></span>
+                  <span style={{opacity: mobileOpen ? 0 : 1}}></span>
+                  <span style={{transform: mobileOpen ? 'rotate(-45deg) translate(4px,-4px)' : 'none'}}></span>
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* MOBILE MENU */}
+          <div className={`mobile-menu${mobileOpen ? ' open' : ''}`}>
+            {[
+              ['#services', t('Services','サービス')],
+              ['#work', t('Our Work','実績')],
+              ['#pricing', t('Pricing','料金')],
+              ['#faq', t('FAQ','よくある質問')]
+            ].map(([href, label]) => (
+              <a key={href} href={href} onClick={() => setMobileOpen(false)}>{label}</a>
+            ))}
+            <div style={{display:'flex',gap:'12px',marginTop:'24px',alignItems:'center'}}>
+              <div className="lang-toggle">
+                <span className={lang === "EN" ? "active" : ""} onClick={() => setLang("EN")}>EN</span>
+                <span className={lang === "JA" ? "active" : ""} onClick={() => setLang("JA")}>日本語</span>
+              </div>
+              <a className="btn-primary" href="#contact" onClick={() => setMobileOpen(false)}>{t("Contact Us", "お問い合わせ")}</a>
+            </div>
+          </div>
+
+          {/* HERO */}
+          <section className="hero">
+            <div className="container" style={{width:'100%'}}>
+              <div className="hero-grid">
+                <div className="hero-left">
+                  <div className="hero-eyebrow fade-up fade-up-delay-1">
+                    Long Beach, CA · {t("US & Japan Markets", "米国・日本市場")}
+                  </div>
+                  <h1 className="hero-headline fade-up fade-up-delay-2">
+                    {lang === 'JA' ? <><em>ひとつのチーム。</em><br />両市場での<br />成長に必要な<br />すべてのサービス。</> : tweaks.heroHeadline}
+                  </h1>
+                  <p className="hero-sub fade-up fade-up-delay-3">
+                    {t(
+                      tweaks.heroSub,
+                      "Yujo Studioは、米国と日本市場でスケールするB2B・DTCブランドのための、バイリンガルのフルサービスエージェンシーです。"
+                    )}
+                  </p>
+                  <div className="hero-ctas fade-up fade-up-delay-4">
+                    <a className="btn-primary" href="#contact">{t("Contact Us", "お問い合わせ")}</a>
+                    <a className="btn-secondary" href="#services">{t("See Our Services", "サービスを見る")}</a>
+                  </div>
+                </div>
+                <div className="hero-right fade-up fade-up-delay-3">
+                  {/* Hero graphic: dual-market geometric mark */}
+                  <svg viewBox="0 0 480 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',marginBottom:'32px',opacity:0.9}}>
+                    {/* Fine grid */}
+                    {Array.from({length:13}).map((_,i)=>(
+                      <line key={`h${i}`} x1="0" y1={i*24} x2="480" y2={i*24} stroke="#111010" strokeWidth="0.5" strokeOpacity="0.12"/>
+                    ))}
+                    {Array.from({length:21}).map((_,i)=>(
+                      <line key={`v${i}`} x1={i*24} y1="0" x2={i*24} y2="280" stroke="#111010" strokeWidth="0.5" strokeOpacity="0.12"/>
+                    ))}
+                    {/* Left circle — US market */}
+                    <circle cx="176" cy="140" r="110" stroke="#111010" strokeWidth="1.5" fill="none"/>
+                    <circle cx="176" cy="140" r="80" stroke="#111010" strokeWidth="0.5" fill="none" strokeOpacity="0.3"/>
+                    <circle cx="176" cy="140" r="4" fill="#111010"/>
+                    <text x="176" y="200" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="9" fontWeight="600" letterSpacing="3" fill="#111010" fillOpacity="0.4">US MARKET</text>
+                    {/* Right circle — JP market */}
+                    <circle cx="320" cy="140" r="110" stroke="#C0392B" strokeWidth="1.5" fill="none"/>
+                    <circle cx="320" cy="140" r="80" stroke="#C0392B" strokeWidth="0.5" fill="none" strokeOpacity="0.3"/>
+                    <circle cx="320" cy="140" r="4" fill="#C0392B"/>
+                    <text x="320" y="200" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="9" fontWeight="600" letterSpacing="3" fill="#C0392B" fillOpacity="0.7">日本市場</text>
+                    {/* Intersection fill */}
+                    <path d="M248,60 C270,80 270,200 248,220 C226,200 226,80 248,60Z" fill="#C0392B" fillOpacity="0.06"/>
+                    {/* Center dot */}
+                    <circle cx="248" cy="140" r="3" fill="#C0392B"/>
+                    {/* Horizontal axis */}
+                    <line x1="40" y1="140" x2="440" y2="140" stroke="#111010" strokeWidth="0.75" strokeOpacity="0.2" strokeDasharray="4 4"/>
+                    {/* Labels */}
+                    <text x="248" y="130" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="8" fontWeight="700" letterSpacing="2" fill="#C0392B">YUJO</text>
+                  </svg>
+                  <div className="hero-tags">
+                    {["B2B", "DTC", "E-commerce", "US → Japan", "Japan → US"].map(tag => (
+                      <div key={tag} className={`hero-tag${tag.includes('→') ? ' tag-red' : ''}`}>{tag}</div>
+                    ))}
+                  </div>
+                  <div className="hero-stats">
+                    <div className="stat">
+                      <div className="stat-num">2<span>x</span></div>
+                      <div className="stat-label">{t("Markets. One team.", "市場対応")}</div>
+                    </div>
+                    <div className="stat">
+                      <div className="stat-num">6<span>+</span></div>
+                      <div className="stat-label">{t("Core services", "コアサービス")}</div>
+                    </div>
+                    <div className="stat">
+                      <div className="stat-num">100<span>%</span></div>
+                      <div className="stat-label">{t("Native bilingual", "完全バイリンガル")}</div>
+                    </div>
+                    <div className="stat">
+                      <div className="stat-num">0</div>
+                      <div className="stat-label">{t("Translation gaps", "翻訳のギャップなし")}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* WHO WE WORK WITH */}
+          <section className="who-section" id="who">
+            <div className="container">
+              <div className="who-header">
+                <div className="section-label">{t("Who We Help", "対象クライアント")}</div>
+                <h2 className="who-title">{t("Built for brands with real cross-market ambitions.", "本気のクロスマーケット戦略を持つブランドへ。")}</h2>
+              </div>
+              <div className="who-grid">
+                <div className="who-col">
+                  <div className="who-col-header b2b">B2B</div>
+                  <div className="who-col-body">
+                    <ul className="who-list">
+                      {[
+                        t("B2B companies entering or expanding in Japan", "日本市場に参入・拡大するB2B企業"),
+                        t("SaaS and tech companies seeking Japanese distribution partners", "日本の販売パートナーを探しているSaaS・テック企業"),
+                        t("US companies needing bilingual sales and marketing materials", "バイリンガルの営業・マーケティング資料が必要な米国企業"),
+                        t("Japanese B2B firms building a US presence", "米国展開を進める日本のB2B企業")
+                      ].map((item, i) => (
+                        <li key={i} className="who-item">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="who-col">
+                  <div className="who-col-header dtc">DTC</div>
+                  <div className="who-col-body">
+                    <ul className="who-list">
+                      {[
+                        t("US DTC brands launching or scaling in Japan on Shopify", "日本でShopifyを使って展開・拡大する米国DTC"),
+                        t("Japanese DTC brands building a US storefront and audience", "米国でのストアフロントとオーディエンスを構築する日本DTC"),
+                        t("Brands needing localized retention and email programs", "ローカライズされたリテンション・メールプログラムが必要なブランド"),
+                        t("Consumer brands with cross-border subscription ambitions", "クロスボーダーのサブスクリプション展開を目指すブランド")
+                      ].map((item, i) => (
+                        <li key={i} className="who-item">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="who-col">
+                  <div className="who-col-header expansion">{t("US–Japan Expansion", "US–Japan 展開")}</div>
+                  <div className="who-col-body">
+                    <ul className="who-list">
+                      {[
+                        t("Brands at any stage of US-Japan market entry", "US・日本市場参入のどの段階にあるブランドも対象"),
+                        t("Companies needing a bilingual agency to bridge both sides", "両市場をつなぐバイリンガル代理店が必要な企業"),
+                        t("Founders without in-house bilingual marketing expertise", "社内にバイリンガルのマーケティング人材がいない創業者"),
+                        t("Brands rebuilding or overhauling their cross-market strategy", "クロスマーケット戦略を再構築・刷新するブランド")
+                      ].map((item, i) => (
+                        <li key={i} className="who-item">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* DIFFERENTIATION */}
+          <section className="diff-section">
+            <div className="container">
+              <div className="diff-header">
+                <div className="section-label">{t("Why Yujo", "Yujoを選ぶ理由")}</div>
+                <h2 className="diff-title">
+                  {t(
+                    <>Not all agencies<br />understand both sides<br /><em style={{fontFamily:'var(--serif)',fontStyle:'italic'}}>of the market.</em></>,
+                    <>すべての代理店が<br />両市場を理解している<br /><em style={{fontFamily:'var(--serif)',fontStyle:'italic'}}>わけではない。</em></>
+                  )}
+                </h2>
+              </div>
+              {/* Diff section background mark */}
+              <div style={{position:'relative'}}>
+              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{position:'absolute',right:0,top:-60,width:'120px',opacity:0.07,pointerEvents:'none'}}>
+                <rect x="10" y="10" width="100" height="100" stroke="#111010" strokeWidth="2"/>
+                <rect x="25" y="25" width="70" height="70" stroke="#111010" strokeWidth="1"/>
+                <rect x="40" y="40" width="40" height="40" stroke="#C0392B" strokeWidth="1.5"/>
+                <circle cx="60" cy="60" r="8" fill="#C0392B"/>
+              </svg>
+              <div className="diff-grid">
+                <div className="diff-col generic">
+                  <div className="diff-col-title">{t("Generic Agencies", "一般的な代理店")}</div>
+                  <ul className="diff-list">
+                    {[
+                      t("Translate copy with machine tools — cultural nuance gets lost", "機械翻訳でコピーを作成 — 文化的なニュアンスが失われる"),
+                      t("Treat both markets identically — tactics that work in the US fail in Japan", "両市場を同一視 — 米国で機能する戦術が日本では通用しない"),
+                      t("Silo services across multiple vendors — strategy never connects", "複数の業者にサービスを分散 — 戦略が一貫しない"),
+                      t("No understanding of B2B relationship-building in Japan", "日本のB2Bにおける関係構築への理解がない"),
+                      t("You spend time managing them, not growing your brand", "ブランド成長ではなく、管理に時間を取られる")
+                    ].map((item, i) => (
+                      <li key={i} className="diff-item">
+                        <span className="diff-item-icon">✕</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="diff-col yujo">
+                  <div className="diff-col-title">Yujo Studio</div>
+                  <ul className="diff-list">
+                    {[
+                      t("Native Japanese fluency — copy written for the culture, not translated into it", "ネイティブな日本語力 — 文化に合わせたコピー作成"),
+                      t("Market-specific strategy for US and Japan — built into every engagement", "米国・日本それぞれに特化した戦略をすべての案件に組み込む"),
+                      t("Full-service under one roof — branding, marketing, email, dev, and more", "ブランディングからマーケティング、メール、開発まで一気通貫"),
+                      t("Deep B2B expertise with an understanding of Japanese business culture", "日本のビジネス文化を理解した深いB2B専門知識"),
+                      t("One point of contact. Total alignment.", "一つの窓口。完全な連携。")
+                    ].map((item, i) => (
+                      <li key={i} className="diff-item">
+                        <span className="diff-item-icon" style={{color:'var(--red)'}}>✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </div>
+          </section>
+
+          {/* SERVICES */}
+          <section className="services-section" id="services">
+            <div className="container">
+              <div className="services-header">
+                <div>
+                  <div className="section-label services-label">{t("What We Do", "サービス内容")}</div>
+                  <h2 className="services-title">{t("Full-service, fully bilingual.", "フルサービス、完全バイリンガル。")}</h2>
+                </div>
+              </div>
+              <div className="services-grid">
+                {services.map((s, i) => (
+                  <div key={i} className="service-card">
+                    {s.tag && <div className="service-tag">{s.tag}</div>}
+                    <div style={{marginBottom:'16px'}}>{serviceIcons[i]}</div>
+                    <h3 className="service-title">{t(s.title, s.title)}</h3>
+                    <p className="service-desc">{s.desc}</p>
+                    <ul className="service-bullets">
+                      {s.bullets.map((b, j) => <li key={j}>{b}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* TECH STACK */}
+          <section className="tech-section">
+            <div className="tech-header">
+              <div className="tech-header-left">
+                <div className="section-label" style={{color:'rgba(244,241,237,0.35)',marginBottom:0}}>{t("Tech Stack","使用ツール")}</div>
+                <h3 className="tech-title">{t("Tools we work with","使用するツール")}</h3>
+              </div>
+              <div style={{textAlign:'right'}}>
+                <div className="tech-count">{techStack.length} platforms &amp; tools</div>
+                <div style={{fontSize:'13px',color:'rgba(244,241,237,0.45)',marginTop:'6px',maxWidth:'280px',lineHeight:'1.5'}}>
+                  {t("Already on something else? We work with your stack too.", "別のツールをお使いですか？御社のスタックにも対応します。")}
+                </div>
+              </div>
+            </div>
+            <div className="tech-track-wrap">
+              <div className="tech-track">
+                {[...techStack,...techStack].map((t2,i) => (
+                  <div key={i} className={`tech-pill${t2.featured?' featured':''}`}>{t2.name}</div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* OUR WORK */}
+          <section className="work-section" id="work">
+            <div className="container">
+              <div className="work-header reveal">
+                <div className="section-label">{t("Our Work", "実績")}</div>
+                <h2 className="work-title">{t("Results that speak for themselves.", "実績が語る成果。")}</h2>
+              </div>
+              <div className="work-grid">
+                {caseStudies.map((c, i) => (
+                  <div key={i} className={`work-card reveal reveal-delay-${i+1}`}>
+                    <div className="work-meta">
+                      {c.tags.map((tag,j) => <span key={j} className={`work-tag${j===0?' red':''}`}>{tag}</span>)}
+                      <span className="work-market">{c.market}</span>
+                    </div>
+                    <div className="work-client">{t(c.client, c.client)}</div>
+                    <div className="work-desc">{c.desc}</div>
+                    <div className="work-result">
+                      <div className="work-result-num">{c.resultNum}</div>
+                      <div className="work-result-label" style={{whiteSpace:'pre-line'}}>{c.resultLabel}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* TESTIMONIALS */}
+          <section className="testimonials-section">
+            <div className="container">
+              <div className="section-label reveal" style={{color:'rgba(244,241,237,0.35)',marginBottom:'40px'}}>{t("What Clients Say", "クライアントの声")}</div>
+              <div className="testimonials-inner">
+                {testimonials.map((t2, i) => (
+                  <div key={i} className={`testimonial-card reveal reveal-delay-${i+1}`}>
+                    <div className="testimonial-quote-mark">&ldquo;</div>
+                    <div className="testimonial-text">{t2.text}</div>
+                    <div className="testimonial-attr">
+                      <div className="testimonial-name">{t2.name}</div>
+                      <div className="testimonial-role">{t2.role}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* PROCESS */}
+          <section className="process-section">
+            <div className="container">
+              <div className="process-header">
+                <div className="section-label">{t("How It Works", "進め方")}</div>
+                <h2 className="process-title">{t("Simple process. Serious results.", "シンプルなプロセス。確かな成果。")}</h2>
+              </div>
+              <div className="process-steps">
+                {[
+                  { num: "01", title: t("Free Discovery Call", "無料ディスカバリーコール"), desc: t("We learn your brand, goals, and the markets you're targeting. No fluff — just an honest conversation about where you are and where you want to go.", "ブランド、目標、ターゲット市場についてお聞きします。正直な会話から始めます。") },
+                  { num: "02", title: t("Strategy & Scope", "戦略とスコープ"), desc: t("We build a clear plan with defined deliverables, timelines, and a budget that makes sense for your stage. You know exactly what you're getting.", "明確な成果物、スケジュール、予算を含む計画を策定します。") },
+                  { num: "03", title: t("Execution & Growth", "実行と成長"), desc: t("We get to work. One team, two markets, every service aligned. You see results — and you stay in the loop at every step.", "ひとつのチームが両市場に向けて動き出します。すべてのサービスが連携し、成果を生み出します。") }
+                ].map((step, i) => (
+                  <div key={i} className="process-step">
+                    <div className="step-num">{step.num}</div>
+                    <h3 className="step-title">{step.title}</h3>
+                    <p className="step-desc">{step.desc}</p>
+                    {i < 2 && <div className="step-connector">→</div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* PRICING */}
+          <section className="pricing-section" id="pricing">
+            <div className="container">
+              <div className="pricing-header reveal">
+                <div className="section-label">{t("How We Work Together", "料金・契約形態")}</div>
+                <h2 className="pricing-title">{t("Flexible engagements.", "柔軟な契約形態。")}</h2>
+                <p className="pricing-sub">{t("Every brand is different. We scope to what you actually need — not a one-size-fits-all package. All engagements include bilingual delivery.", "すべてのブランドは異なります。必要なものに合わせてスコープします。")}</p>
+              </div>
+              <div className="pricing-grid">
+                {pricingTiers.map((p, i) => (
+                  <div key={i} className={`pricing-card reveal reveal-delay-${i+1}${p.featured?' featured':''}`}>
+                    {p.badge && <div className="pricing-badge">{p.badge}</div>}
+                    <div className="pricing-tier">{p.tier}</div>
+                    <div className="pricing-name">{t(p.name, p.name)}</div>
+                    <div className="pricing-desc">{p.desc}</div>
+                    <ul className="pricing-features">
+                      {p.features.map((f,j) => <li key={j}>{f}</li>)}
+                    </ul>
+                    <div className="pricing-cta-label">{t("Ready to start?", "始める準備は？")}</div>
+                    <a href="#contact" className={p.featured ? 'btn-primary' : 'btn-secondary'} style={{marginTop:'8px',textAlign:'center'}}>{t(p.cta, p.cta)}</a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ */}
+          <section className="faq-section" id="faq">
+            <div className="container">
+              <div className="faq-header reveal">
+                <div className="section-label">{t("Common Questions", "よくある質問")}</div>
+                <h2 className="faq-title">{t("Everything you need to know.", "知っておくべきこと。")}</h2>
+              </div>
+              <div className="faq-grid">
+                {faqs.map((f, i) => <FAQItem key={i} q={t(f.q, f.q)} a={t(f.a, f.a)} />)}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA BAND */}
+          <section className="cta-band">
+            <div className="container" style={{position:'relative',overflow:'hidden'}}>
+              <svg viewBox="0 0 400 400" fill="none" style={{position:'absolute',right:'-80px',top:'50%',transform:'translateY(-50%)',width:'380px',opacity:0.06,pointerEvents:'none'}}>
+                <circle cx="200" cy="200" r="190" stroke="white" strokeWidth="1.5"/>
+                <circle cx="200" cy="200" r="140" stroke="white" strokeWidth="1"/>
+                <circle cx="200" cy="200" r="90" stroke="#C0392B" strokeWidth="2"/>
+                <circle cx="200" cy="200" r="40" stroke="white" strokeWidth="1"/>
+                <line x1="10" y1="200" x2="390" y2="200" stroke="white" strokeWidth="0.75"/>
+                <line x1="200" y1="10" x2="200" y2="390" stroke="white" strokeWidth="0.75"/>
+                <circle cx="200" cy="200" r="5" fill="#C0392B"/>
+              </svg>
+              <div className="cta-band-inner">
+                <h2 className="cta-headline">
+                  {t(
+                    <><em>B2B or DTC, US or Japan</em> — let's figure out what growth looks like for your brand.</>,
+                    <><em>B2BでもDTCでも、米国でも日本でも</em> — あなたのブランドの成長を一緒に考えましょう。</>
+                  )}
+                </h2>
+                <button className="btn-primary-light" onClick={()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'})}>{t("Get Started", "お問い合わせ")}</button>
+              </div>
+            </div>
+          </section>
+
+          {/* CONTACT FORM */}
+          <section className="contact-section" id="contact">
+            <div className="container">
+              <div className="section-label" style={{marginBottom:'16px'}}>{t("Get In Touch", "お問い合わせ")}</div>
+              <div className="contact-grid">
+                <div className="contact-left">
+                  <h2 className="contact-title">
+                    {t(<>Let's talk about<br /><em>your brand.</em></>, <>あなたのブランドについて<br /><em>話しましょう。</em></>)}
+                  </h2>
+                  <p className="contact-desc">
+                    {t(
+                      "Tell us a bit about where you are and what you're trying to build. We'll get back to you within one business day.",
+                      "現在の状況と目標を教えてください。1営業日以内にご連絡いたします。"
+                    )}
+                  </p>
+                  <div className="contact-detail">
+                    <div className="contact-detail-item">
+                      <span>Email</span>
+                      <span>hello@yujo.studio</span>
+                    </div>
+                    <div className="contact-detail-item">
+                      <span>Based</span>
+                      <span>Long Beach, CA · US &amp; Japan</span>
+                    </div>
+                    <div className="contact-detail-item">
+                      <span>Response</span>
+                      <span>Within 1 business day</span>
+                    </div>
+                  </div>
+                </div>
+                <ContactForm t={t} />
+              </div>
+            </div>
+          </section>
+
+          {/* FOOTER */}
+          <footer>
+            <div className="container">
+              <div className="footer-inner">
+                <div>
+                  <div className="footer-logo">
+                    Yujo<span className="logo-dot"></span>Studio
+                  </div>
+                  <div className="footer-location">
+                    Long Beach, CA · US &amp; Japan
+                  </div>
+                </div>
+                <a href="mailto:hello@yujo.studio" className="footer-email">hello@yujo.studio</a>
+                <div className="footer-copy">© 2026 Yujo Studio. All rights reserved.</div>
+              </div>
+            </div>
+          </footer>
+
+          <TweaksPanel>
+            <TweakSection label="Copy" />
+            <TweakText label="Headline" value={tweaks.heroHeadline}
+              onChange={v => setTweak('heroHeadline', v)} />
+            <TweakText label="Subheadline" value={tweaks.heroSub}
+              onChange={v => setTweak('heroSub', v)} />
+            <TweakSection label="Colors" />
+            <TweakColor label="Accent" value={tweaks.accentColor}
+              onChange={v => setTweak('accentColor', v)} />
+            <TweakColor label="Background" value={tweaks.bgColor}
+              onChange={v => setTweak('bgColor', v)} />
+            <TweakColor label="Dark BG" value={tweaks.darkBg}
+              onChange={v => setTweak('darkBg', v)} />
+          </TweaksPanel>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
