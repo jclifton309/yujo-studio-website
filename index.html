@@ -1441,6 +1441,14 @@
 
 
 <body>
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="text" name="brand" />
+    <input type="text" name="market" />
+    <textarea name="message"></textarea>
+    <input type="text" name="bot-field" />
+  </form>
   <div id="root"></div>
   <script type="text/babel">
     const { useState, useEffect, useRef } = React;
@@ -1520,15 +1528,42 @@
       const [market, setMarket] = useState('');
       const [submitted, setSubmitted] = useState(false);
       const [loading, setLoading] = useState(false);
+      const [submitError, setSubmitError] = useState(false);
+      const [botField, setBotField] = useState('');
 
       const set = (k, v) => setFields(f => ({...f, [k]: v}));
 
-      const handleSubmit = (e) => {
+      const encode = (data) => Object.keys(data).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+
+      const handleSubmit = async (e) => {
         e.preventDefault();
+        if (botField) return;
         if (!fields.name || !fields.email) return;
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) return;
+        if (fields.message.length > 2000) return;
         setLoading(true);
-        // TODO: wire to backend / form handler in Claude Code export
-        setTimeout(() => { setLoading(false); setSubmitted(true); }, 800);
+        setSubmitError(false);
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encode({
+              'form-name': 'contact',
+              'bot-field': botField,
+              name: fields.name,
+              email: fields.email,
+              brand: fields.brand,
+              market: market,
+              message: fields.message
+            })
+          });
+          if (!res.ok) throw new Error('submit failed');
+          setLoading(false);
+          setSubmitted(true);
+        } catch (err) {
+          setLoading(false);
+          setSubmitError(true);
+        }
       };
 
       if (submitted) return (
@@ -1550,6 +1585,7 @@
 
       return (
         <form className="contact-form" onSubmit={handleSubmit}>
+          <input type="text" name="bot-field" value={botField} onChange={e=>setBotField(e.target.value)} style={{display:'none'}} />
           <div className="form-row">
             <div className="form-field">
               <label>{t("Your Name", "お名前")} *</label>
@@ -1582,10 +1618,20 @@
               <textarea placeholder={t("Where are you now, and where do you want to go?", "現状と目標を教えてください。")} value={fields.message} onChange={e=>set('message',e.target.value)} />
             </div>
           </div>
+          {submitError && (
+            <div className="form-submit-row" style={{paddingBottom:0}}>
+              <p style={{color:'var(--red)',fontSize:'14px',margin:0}}>
+                {t(
+                  "Something went wrong. Please email hello@yujo.studio directly or try again.",
+                  "エラーが発生しました。hello@yujo.studio に直接メールするか、再度お試しください。"
+                )}
+              </p>
+            </div>
+          )}
           <div className="form-submit-row">
             <div className="form-note">
-              {t("Free discovery call included.", "無料ディスカバリーコール付き。")}<br />
-              {t("No commitment required.", "コミットメント不要。")}
+              {t("Free discovery call.", "無料ディスカバリーコール。")}<br />
+              {t("We reply within 1 business day.", "1営業日以内にご返信いたします。")}
             </div>
             <button type="submit" className="btn-primary" disabled={loading} style={{opacity:loading?0.6:1}}>
               {loading ? t("Sending…", "送信中…") : t("Send Message", "送信する")}
