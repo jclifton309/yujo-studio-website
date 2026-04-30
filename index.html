@@ -141,7 +141,10 @@
       overflow: hidden;
     }
     .lang-toggle span {
-      padding: 6px 10px;
+      padding: 10px 14px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       transition: all 0.2s;
     }
     .lang-toggle span.active {
@@ -276,7 +279,8 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 7px 14px;
+      padding: 10px 14px;
+      min-height: 38px;
       border: 1px solid rgba(17,16,16,0.2);
       color: var(--black);
       background: transparent;
@@ -842,7 +846,8 @@
     .form-market-opt {
       font-size: 12px;
       font-weight: 500;
-      padding: 6px 14px;
+      padding: 10px 16px;
+      min-height: 40px;
       border: 1px solid rgba(17,16,16,0.15);
       cursor: pointer;
       transition: all 0.15s;
@@ -1338,11 +1343,15 @@
       padding: 4px;
       background: none;
       border: none;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
     }
     .nav-hamburger span {
       display: block;
-      width: 22px;
-      height: 1.5px;
+      width: 24px;
+      height: 2px;
       background: var(--black);
       transition: all 0.2s;
     }
@@ -1356,6 +1365,7 @@
       flex-direction: column;
       padding: 24px 32px 32px;
       gap: 0;
+      min-height: calc(100dvh - 64px);
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
@@ -1444,6 +1454,23 @@
       .faq-title, .contact-title, .services-title, .process-title { font-size: 28px; }
       .cta-headline { font-size: 26px; }
       .form-market-options { flex-wrap: wrap; }
+      .form-submit-row { flex-direction: column; align-items: stretch; gap: 16px; padding: 20px; }
+      .form-submit-row .form-note { text-align: left; }
+    }
+
+    /* Skip link */
+    .skip-link { position: absolute; top: -40px; left: 8px; background: var(--black); color: var(--off-white); padding: 8px 14px; z-index: 1000; text-decoration: none; }
+    .skip-link:focus { top: 8px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .tech-track { animation: none !important; }
+      html { scroll-behavior: auto !important; }
     }
   </style>
 
@@ -1527,6 +1554,7 @@
   </script>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="text" name="name" />
     <input type="email" name="email" />
@@ -1851,32 +1879,33 @@
       }, []);
     }
 
-    function FAQItem({ q, a }) {
+    function FAQItem({ q, a, index }) {
       const [open, setOpen] = useState(false);
+      const answerId = `faq-answer-${index}`;
       return (
         <div className={`faq-item${open ? ' open' : ''}`}>
-          <button className="faq-question" onClick={() => setOpen(!open)}>
+          <button className="faq-question" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={answerId}>
             <span>{q}</span>
             <span className="faq-icon">{open ? '−' : '+'}</span>
           </button>
-          <div className="faq-answer">{a}</div>
+          <div id={answerId} className="faq-answer" role="region">{a}</div>
         </div>
       );
     }
 
     const serviceIcons = [
       // Branding & Design
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="1" y="1" width="34" height="34" stroke="#C0392B" strokeWidth="1"/><rect x="8" y="8" width="20" height="20" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><circle cx="18" cy="18" r="4" fill="#C0392B"/></svg>,
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="1" y="1" width="34" height="34" stroke="#C0392B" strokeWidth="1"/><rect x="8" y="8" width="20" height="20" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><circle cx="18" cy="18" r="4" fill="#C0392B"/></svg>,
       // Digital Marketing
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" stroke="#C0392B" strokeWidth="1"/><line x1="2" y1="18" x2="34" y2="18" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="18" y1="2" x2="18" y2="34" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><circle cx="18" cy="18" r="2" fill="#C0392B"/><path d="M18 2 C24 8 24 28 18 34" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75" fill="none"/><path d="M18 2 C12 8 12 28 18 34" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75" fill="none"/></svg>,
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="16" stroke="#C0392B" strokeWidth="1"/><line x1="2" y1="18" x2="34" y2="18" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="18" y1="2" x2="18" y2="34" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><circle cx="18" cy="18" r="2" fill="#C0392B"/><path d="M18 2 C24 8 24 28 18 34" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75" fill="none"/><path d="M18 2 C12 8 12 28 18 34" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75" fill="none"/></svg>,
       // E-commerce
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="6" y="12" width="24" height="18" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><path d="M12 12 C12 8 24 8 24 12" stroke="#C0392B" strokeWidth="1" fill="none"/><line x1="6" y1="20" x2="30" y2="20" stroke="rgba(244,241,237,0.2)" strokeWidth="0.5"/><circle cx="13" cy="27" r="1.5" fill="#C0392B"/><circle cx="23" cy="27" r="1.5" fill="#C0392B"/></svg>,
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="6" y="12" width="24" height="18" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><path d="M12 12 C12 8 24 8 24 12" stroke="#C0392B" strokeWidth="1" fill="none"/><line x1="6" y1="20" x2="30" y2="20" stroke="rgba(244,241,237,0.2)" strokeWidth="0.5"/><circle cx="13" cy="27" r="1.5" fill="#C0392B"/><circle cx="23" cy="27" r="1.5" fill="#C0392B"/></svg>,
       // Email & Retention
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="4" y="9" width="28" height="20" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><path d="M4 9 L18 20 L32 9" stroke="#C0392B" strokeWidth="1" fill="none"/><line x1="4" y1="29" x2="32" y2="29" stroke="rgba(244,241,237,0.15)" strokeWidth="0.5"/></svg>,
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="4" y="9" width="28" height="20" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><path d="M4 9 L18 20 L32 9" stroke="#C0392B" strokeWidth="1" fill="none"/><line x1="4" y1="29" x2="32" y2="29" stroke="rgba(244,241,237,0.15)" strokeWidth="0.5"/></svg>,
       // Systems & Automation
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="8" cy="10" r="4" stroke="#C0392B" strokeWidth="1"/><circle cx="28" cy="10" r="4" stroke="rgba(244,241,237,0.35)" strokeWidth="0.75"/><circle cx="18" cy="28" r="4" stroke="rgba(244,241,237,0.35)" strokeWidth="0.75"/><line x1="12" y1="10" x2="24" y2="10" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/><line x1="10" y1="13" x2="15" y2="24" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/><line x1="26" y1="13" x2="21" y2="24" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/></svg>,
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="8" cy="10" r="4" stroke="#C0392B" strokeWidth="1"/><circle cx="28" cy="10" r="4" stroke="rgba(244,241,237,0.35)" strokeWidth="0.75"/><circle cx="18" cy="28" r="4" stroke="rgba(244,241,237,0.35)" strokeWidth="0.75"/><line x1="12" y1="10" x2="24" y2="10" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/><line x1="10" y1="13" x2="15" y2="24" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/><line x1="26" y1="13" x2="21" y2="24" stroke="rgba(244,241,237,0.25)" strokeWidth="0.75"/></svg>,
       // Web Development
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="3" y="6" width="30" height="24" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="3" y1="13" x2="33" y2="13" stroke="rgba(244,241,237,0.2)" strokeWidth="0.5"/><circle cx="7" cy="9.5" r="1.5" fill="rgba(244,241,237,0.25)"/><circle cx="11" cy="9.5" r="1.5" fill="rgba(244,241,237,0.25)"/><circle cx="15" cy="9.5" r="1.5" fill="#C0392B"/><path d="M10 22 L14 18 L10 22Z" stroke="#C0392B" strokeWidth="1" fill="none" strokeLinejoin="round"/><line x1="14" y1="18" x2="18" y2="26" stroke="#C0392B" strokeWidth="1"/><line x1="21" y1="18" x2="26" y2="22" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="26" y1="22" x2="21" y2="26" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/></svg>
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="3" y="6" width="30" height="24" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="3" y1="13" x2="33" y2="13" stroke="rgba(244,241,237,0.2)" strokeWidth="0.5"/><circle cx="7" cy="9.5" r="1.5" fill="rgba(244,241,237,0.25)"/><circle cx="11" cy="9.5" r="1.5" fill="rgba(244,241,237,0.25)"/><circle cx="15" cy="9.5" r="1.5" fill="#C0392B"/><path d="M10 22 L14 18 L10 22Z" stroke="#C0392B" strokeWidth="1" fill="none" strokeLinejoin="round"/><line x1="14" y1="18" x2="18" y2="26" stroke="#C0392B" strokeWidth="1"/><line x1="21" y1="18" x2="26" y2="22" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/><line x1="26" y1="22" x2="21" y2="26" stroke="rgba(244,241,237,0.3)" strokeWidth="0.75"/></svg>
     ];
 
     function App() {
@@ -1944,7 +1973,7 @@
           </div>
 
           {/* HERO */}
-          <section className="hero">
+          <section className="hero" id="main-content">
             <div className="container" style={{width:'100%'}}>
               <div className="hero-grid">
                 <div className="hero-left">
@@ -1967,7 +1996,7 @@
                 </div>
                 <div className="hero-right fade-up fade-up-delay-3">
                   {/* Hero graphic: dual-market geometric mark */}
-                  <svg viewBox="0 0 480 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',marginBottom:'32px',opacity:0.9}}>
+                  <svg viewBox="0 0 480 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',marginBottom:'32px',opacity:0.9}} aria-hidden="true">
                     {/* Fine grid */}
                     {Array.from({length:13}).map((_,i)=>(
                       <line key={`h${i}`} x1="0" y1={i*24} x2="480" y2={i*24} stroke="#111010" strokeWidth="0.5" strokeOpacity="0.12"/>
@@ -2093,7 +2122,7 @@
               </div>
               {/* Diff section background mark */}
               <div style={{position:'relative'}}>
-              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{position:'absolute',right:0,top:-60,width:'120px',opacity:0.07,pointerEvents:'none'}}>
+              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{position:'absolute',right:0,top:-60,width:'120px',opacity:0.07,pointerEvents:'none'}} aria-hidden="true">
                 <rect x="10" y="10" width="100" height="100" stroke="#111010" strokeWidth="2"/>
                 <rect x="25" y="25" width="70" height="70" stroke="#111010" strokeWidth="1"/>
                 <rect x="40" y="40" width="40" height="40" stroke="#C0392B" strokeWidth="1.5"/>
@@ -2290,7 +2319,7 @@
                 <h2 className="faq-title">{t("Everything you need to know.", "知っておくべきこと。")}</h2>
               </div>
               <div className="faq-grid">
-                {faqs.map((f, i) => <FAQItem key={i} q={t(f.q, f.q)} a={t(f.a, f.a)} />)}
+                {faqs.map((f, i) => <FAQItem key={i} index={i} q={t(f.q, f.q)} a={t(f.a, f.a)} />)}
               </div>
             </div>
           </section>
