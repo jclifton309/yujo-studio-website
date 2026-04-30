@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#F4F1ED"/>
+  <text
+    x="32"
+    y="54"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="52"
+    font-weight="400"
+    text-anchor="middle"
+    fill="#111010"
+  >Y</text>
+  <circle cx="50" cy="13" r="6" fill="#C0392B"/>
+</svg>
